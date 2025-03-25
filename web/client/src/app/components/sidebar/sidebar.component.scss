@@ -1,0 +1,43 @@
+.logo {
+  width: 4em;
+  border-radius: 100px;
+  transform: scale(1.5);
+  margin-bottom: 30px;
+  margin-top: -20px;
+  display: flex;
+  padding: 0.5em;
+  background: var(--quaternary-color);
+}
+
+.container {
+  background-color: var(--quaternary-color);
+  position: fixed;
+  height: 85vh;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  padding: 1em 0.5em;
+  align-items: center;
+  margin-left: 25px;
+  border-radius: 20px;
+}
+
+.top {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.icon {
+  font-size: 1.8em;
+  cursor: pointer;
+}

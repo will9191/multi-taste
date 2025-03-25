@@ -1,0 +1,77 @@
+.navigation {
+  display: flex;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 2em;
+}
+
+.navigation-item {
+  padding: 0em 1.5em;
+  cursor: pointer;
+}
+
+.navigation-item:first-child {
+  color: var(--quaternary-color);
+  border-bottom: 1px solid var(--quaternary-color);
+  background-color: rgba(var(--quinary-color-rgb), 1);
+  border-radius: 10px;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-top: 1em;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  background-color: var(--quaternary-color);
+  border-radius: 20px;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  width: 100%;
+}
+
+.img {
+  width: 5em;
+  height: 5em;
+  border-radius: 90px;
+  background-color: var(--quinary-color);
+  padding: 0.05em;
+  transform: scale(1.2);
+}
+
+.body {
+  margin-left: 1em;
+  margin-right: 1em;
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0.75;
+}
+
+.ingredient {
+  padding: 0 1em;
+  display: flex;
+}
+
+.ingredient:first-child {
+  padding: 0 1em 0 0;
+}
+
+.ingredient:not(:last-child) {
+  border-right: 1px solid var(--quinary-color);
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="top">
+    <img class="logo" src="logo.webp" alt="" />
+    <div class="items">
+      @for (item of sideItems; track $index) {
+      <ng-icon class="icon" name="{{ item.icon }}"></ng-icon>
+      }
+    </div>
+  </div>
+  <div class="items">
+    <ng-icon class="icon" name="matSettingsOutline"></ng-icon>
+  </div>
+</div>
