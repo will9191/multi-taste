@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="top-field">
+    <h2>Food Bank</h2>
+    <button class="new">+ New Ingredient</button>
+  </div>
+  <div class="navigation">
+    <div class="navigation-item">All</div>
+    <div class="navigation-item">Dough's</div>
+    <div class="navigation-item">Spices</div>
+    <div class="navigation-item">Proteins</div>
+    <div class="navigation-item">Sauces</div>
+  </div>
+
+  <div class="ingredients">
+    @for (ingredient of ingredients; track $index) {
+    <div class="ingredient">
+      <img class="img" src="{{ ingredient.img }}" alt="" />
+      <div class="body">
+        <div class="top">
+          <div class="left">
+            <div class="name">{{ ingredient.name }}</div>
+            <div class="quantity">
+              {{ ingredient.quantity }} {{ ingredient.measure }}
+            </div>
+          </div>
+          <div class="actions">
+            <app-view-button></app-view-button>
+            <app-edit-button></app-edit-button>
+            <app-share-button></app-share-button>
+            <app-delete-button></app-delete-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

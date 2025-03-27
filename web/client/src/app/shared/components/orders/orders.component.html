@@ -1,0 +1,57 @@
+<div class="orders-container">
+  <div class="top">
+    <div class="title">Orders</div>
+    <button class="new-order">+ New Order</button>
+  </div>
+  <div class="navigation">
+    @for (item of navigation; track $index) {
+    <div class="navigation-item">{{ item.name }}</div>
+    }
+  </div>
+  <div class="search">
+    <ng-icon class="icon-search" name="matSearchOutline"></ng-icon>
+    <input class="search-input" type="text" placeholder="Search" />
+  </div>
+  <div class="orders">
+    @for (order of orders; track $index) {
+    <div class="order">
+      <div class="order-top">
+        <div class="order-person-name">{{ order.user.name }}</div>
+        <div class="order-top-right">
+          <div class="order-status" [attr.color_code]="order.status">
+            {{ order.status }}
+          </div>
+          <button class="btn" (click)="toggleOrderDetails(order.id)">
+            <ng-icon
+              class="arrow-icon"
+              name="matKeyboardArrowUpOutline"
+              *ngIf="expandedOrders.includes(order.id)"
+            ></ng-icon>
+            <ng-icon
+              class="arrow-icon"
+              name="matKeyboardArrowDownOutline"
+              *ngIf="!expandedOrders.includes(order.id)"
+            ></ng-icon>
+          </button>
+        </div>
+      </div>
+      <div class="order-items" *ngIf="expandedOrders.includes(order.id)">
+        @for (item of order.orderItems; track $index) {
+        <div class="order-item">
+          <img class="img" src="{{ item.img }}" alt="" />
+          <div>{{ item.name }}({{item.size}})</div>
+          <div>{{ item.quantity }}x</div>
+        </div>
+        }
+      </div>
+      <div>
+        <div>Order id: {{ order.id }}</div>
+      </div>
+      <div>
+        <div class="order-value">{{ order.currency }}{{ order.value }}</div>
+        <div></div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
