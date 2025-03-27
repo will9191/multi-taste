@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { ViewButtonComponent } from "../buttons/view-button/view-button.component";
+import { EditButtonComponent } from "../buttons/edit-button/edit-button.component";
+import { ShareButtonComponent } from "../buttons/share-button/share-button.component";
+import { DeleteButtonComponent } from "../buttons/delete-button/delete-button.component";
 
 @Component({
   selector: 'app-products',
-  imports: [],
+  imports: [ViewButtonComponent, EditButtonComponent, ShareButtonComponent, DeleteButtonComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })

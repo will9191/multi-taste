@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@ng-icons/core": "^31.2.0",
+    "@ng-icons/huge-icons": "^31.2.0",
     "@ng-icons/material-icons": "^31.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

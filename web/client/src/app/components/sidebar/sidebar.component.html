@@ -3,7 +3,7 @@
     <img class="logo" src="logo.webp" alt="" />
     <div class="items">
       @for (item of sideItems; track $index) {
-      <ng-icon class="icon" name="{{ item.icon }}"></ng-icon>
+      <ng-icon routerLink="{{item.to}}" class="icon" name="{{ item.icon }}"></ng-icon>
       }
     </div>
   </div>

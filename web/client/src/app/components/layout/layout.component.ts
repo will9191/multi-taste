@@ -6,8 +6,9 @@ import {
   matSettingsOutline,
   matNotificationsNoneOutline,
   matSearchOutline,
-  matKeyboardArrowDownOutline,
+  matKeyboardArrowDownOutline, matLocalPizzaOutline, matPeopleAltOutline
 } from '@ng-icons/material-icons/outline';
+import { hugeKnife02 } from '@ng-icons/huge-icons'
 import { provideIcons } from '@ng-icons/core';
 import { OrdersComponent } from '../orders/orders.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -26,10 +27,10 @@ import { RouterModule } from '@angular/router';
       matSettingsOutline,
       matSearchOutline,
       matNotificationsNoneOutline,
-      matKeyboardArrowDownOutline,
+      matKeyboardArrowDownOutline, matLocalPizzaOutline, hugeKnife02, matPeopleAltOutline
     }),
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {}
+export class LayoutComponent { }
