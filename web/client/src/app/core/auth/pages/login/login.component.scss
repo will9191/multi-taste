@@ -21,37 +21,7 @@
   align-self: center;
 }
 
-.form-field {
-  position: relative;
-}
 
-.input-field {
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid var(--quinary-color);
-}
-
-.label-field {
-  position: absolute;
-  top: 10px;
-  left: 8px;
-  font-size: 14px;
-  padding: 0px 5px;
-  transition: 0.3s;
-  pointer-events: none;
-}
-
-.input-field:focus + .label-field,
-.input-field:valid + .label-field {
-  top: -10px;
-  background: var(--quaternary-color);
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
 
 .btn {
   background: var(--quinary-color);
