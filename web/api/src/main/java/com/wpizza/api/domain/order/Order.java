@@ -1,7 +1,6 @@
 package com.wpizza.api.domain.order;
 
 import com.wpizza.api.domain.orderItem.OrderItem;
-import com.wpizza.api.utils.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,5 +10,4 @@ public class Order {
     public UUID id;
     public List<OrderItem> orderItems;
     public BigDecimal price;
-    public OrderStatus orderStatus;
 }
