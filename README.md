@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.webp?token=GHSAT0AAAAAAC66UQ2FRYV2JAJVDRBIYYIQZ7G24QQ)
+![Logo]([https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.webp?token=GHSAT0AAAAAAC66UQ2FRYV2JAJVDRBIYYIQZ7G24QQ](https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.webp)
 
 # W Pizza (in development)
 
