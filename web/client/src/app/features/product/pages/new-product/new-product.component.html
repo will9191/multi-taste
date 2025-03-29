@@ -1,0 +1,57 @@
+<div class="container">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="formGroup.get('productType')!">
+            <form [formGroup]="formGroup">
+                <h2>What you want to add to menu?</h2>
+                <ul class="selectClass">
+                    @for (type of productTypes; track $index) {
+                    <li class="optionClass">
+                        <input (change)="selectType(type, stepper)" id="{{ type.name }}" type="radio" name="productType"
+                            value="{{ type.id }}" class="inputClass" formControlName="productType" />
+                        <label class="labelClass" for="{{ type.name }}">
+                            {{ type.name }}
+                        </label>
+                    </li>
+                    }
+                </ul>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="formGroup.get('commonFields')!">
+            <form [formGroup]="formGroup">
+                <h2>Common Information</h2>
+
+                <div class="fields">
+                    <div class="form-field">
+                        <input class="input-field" formControlName="name" required />
+                        <label class="label-field">Name</label>
+                    </div>
+
+                    <div class="form-field">
+                        <input class="input-field" formControlName="price" required currencyMask
+                            [options]="{prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false}" />
+                        <label class="label-field">Price</label>
+                    </div>
+
+                    <div class="form-field">
+                        <input class="input-field" formControlName="discount" required currencyMask
+                            [options]="{prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false}" />
+                        <label class="label-field">Discount</label>
+                    </div>
+
+                    <div class="form-field">
+                        <input class="input-field" formControlName="discountPrice" required currencyMask
+                            [options]="{prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false}" />
+                        <label class="label-field">Price with Discount</label>
+                    </div>
+                </div>
+
+
+                <div class="btns">
+                    <button class="btn btn-prev" mat-button matStepperPrevious>Back</button>
+                    <button class="btn btn-next" mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

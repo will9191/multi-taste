@@ -4,10 +4,11 @@ import { EditButtonComponent } from '../../../../shared/components/buttons/edit-
 import { ShareButtonComponent } from '../../../../shared/components/buttons/share-button/share-button.component';
 import { DeleteButtonComponent } from '../../../../shared/components/buttons/delete-button/delete-button.component';
 import { MatDialog } from '@angular/material/dialog';
-import { NewModalComponent } from '../../../../core/components/modal/new-modal/new-modal.component';
+
 import { MySearchFieldComponent } from "../../../../shared/components/my-search-field/my-search-field.component";
 import { DeleteModalComponent } from '../../../../shared/components/delete-modal/delete-modal.component';
 import { ProductService } from '../../product.service';
+import { NewProductComponent } from '../new-product/new-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -25,7 +26,7 @@ export class ProductListComponent {
   constructor(private productService: ProductService, private matDialog: MatDialog) { }
 
   new() {
-    const newDialog = this.matDialog.open(NewModalComponent);
+    const newDialog = this.matDialog.open(NewProductComponent);
   }
 
   delete(id: number, img: string, name: string) {

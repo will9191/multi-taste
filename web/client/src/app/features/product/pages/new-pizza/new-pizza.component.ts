@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MyInputComponent } from "../../../../shared/components/my-input/my-input.component";
 
 @Component({
-  selector: 'app-new-modal',
+  selector: 'app-new-pizza',
   imports: [MyInputComponent],
-  templateUrl: './new-modal.component.html',
-  styleUrl: './new-modal.component.scss'
+  templateUrl: './new-pizza.component.html',
+  styleUrl: './new-pizza.component.scss'
 })
-export class NewModalComponent {
+export class NewPizzaComponent {
 
 }

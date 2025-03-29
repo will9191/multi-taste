@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { MySearchFieldComponent } from '../../../shared/components/my-search-field/my-search-field.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-order-list-fixed',
-  imports: [NgIcon, MySearchFieldComponent, RouterModule],
+  imports: [NgIcon, MySearchFieldComponent, RouterModule, CommonModule],
   templateUrl: './order-list-fixed.component.html',
   styleUrl: './order-list-fixed.component.scss'
 })
