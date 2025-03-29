@@ -6,6 +6,9 @@ import { IngredientListComponent } from './features/ingredient/pages/ingredient-
 import { UtensilsComponent } from './features/utensil/pages/utensils/utensils.component';
 import { EmployeesComponent } from './features/employee/pages/employees/employees.component';
 import { RegisterComponent } from './core/auth/pages/register/register.component';
+import { ProductDetailsComponent } from './features/product/pages/product-details/product-details.component';
+import { OrderListComponent } from './features/order/order-list/order-list.component';
+import { OrderDetailsComponent } from './features/order/order-details/order-details.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +19,17 @@ export const routes: Routes = [
         path: 'products',
         component: ProductListComponent,
         title: 'Products - W Pizza',
+      },
+      {
+        path: 'products/1',
+        component: ProductDetailsComponent,
+      },
+      {
+        path: 'orders',
+        component: OrderListComponent, title: 'Orders - W Pizza'
+      }, {
+        path: 'orders/1',
+        component: OrderDetailsComponent
       },
       {
         path: 'ingredients',

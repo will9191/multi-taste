@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="x">X</div>
+    <div class="text">Are you sure you want to delete this item?</div>
+    <div class="center"><img class="img" src="{{data.img}}" alt="">
+        <div class="name">{{data.name}}</div>
+    </div>
+    <div class="btns">
+        <button (click)="onConfirm(false)" class="btn btn-no">Cancel</button>
+        <button (click)="onConfirm(true)" class="btn btn-yes">Delete</button>
+    </div>
+</div>

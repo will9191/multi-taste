@@ -8,10 +8,7 @@
     <div class="navigation-item">{{ item.name }}</div>
     }
   </div>
-  <div class="search">
-    <ng-icon class="icon-search" name="matSearchOutline"></ng-icon>
-    <input class="search-input" type="text" placeholder="Search" />
-  </div>
+  <app-my-search-field></app-my-search-field>
   <div class="orders">
     @for (order of orders; track $index) {
     <div class="order">
@@ -22,16 +19,10 @@
             {{ order.status }}
           </div>
           <button class="btn" (click)="toggleOrderDetails(order.id)">
-            <ng-icon
-              class="arrow-icon"
-              name="matKeyboardArrowUpOutline"
-              *ngIf="expandedOrders.includes(order.id)"
-            ></ng-icon>
-            <ng-icon
-              class="arrow-icon"
-              name="matKeyboardArrowDownOutline"
-              *ngIf="!expandedOrders.includes(order.id)"
-            ></ng-icon>
+            <ng-icon class="arrow-icon" name="matKeyboardArrowUpOutline"
+              *ngIf="expandedOrders.includes(order.id)"></ng-icon>
+            <ng-icon class="arrow-icon" name="matKeyboardArrowDownOutline"
+              *ngIf="!expandedOrders.includes(order.id)"></ng-icon>
           </button>
         </div>
       </div>
@@ -44,12 +35,14 @@
         </div>
         }
       </div>
-      <div>
-        <div>Order id: {{ order.id }}</div>
-      </div>
-      <div>
-        <div class="order-value">{{ order.currency }}{{ order.value }}</div>
-        <div></div>
+      <div class="order-bottom">
+        <div>
+          <div>Order id: {{ order.id }}</div>
+          <div class="order-value">{{ order.currency }}{{ order.value }}</div>
+        </div>
+        <div class="btn-details" routerLink="orders/{{order.id}}">
+          Details
+        </div>
       </div>
     </div>
     }

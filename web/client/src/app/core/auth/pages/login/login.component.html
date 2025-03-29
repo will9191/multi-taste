@@ -8,4 +8,14 @@
     </div>
     <button class="btn">Sign In</button>
   </form>
+
+  <div class="users">
+    @for (user of users; track $index) {
+    <div class="user">
+      @if (user.img) {
+      <img class="img" src="{{user.img}}" alt="">} @else {<ng-icon class="icon-img" name="hugeUser"></ng-icon>}
+      <div class="enter">Enter as <span class="role">{{user.role}}</span> </div>
+      <ng-icon class="icon" name="hugeSquareArrowRight02"></ng-icon>
+    </div>}
+  </div>
 </div>

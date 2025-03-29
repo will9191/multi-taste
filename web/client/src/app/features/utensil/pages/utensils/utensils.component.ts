@@ -3,6 +3,7 @@ import { ViewButtonComponent } from '../../../../shared/components/buttons/view-
 import { EditButtonComponent } from '../../../../shared/components/buttons/edit-button/edit-button.component';
 import { ShareButtonComponent } from '../../../../shared/components/buttons/share-button/share-button.component';
 import { DeleteButtonComponent } from '../../../../shared/components/buttons/delete-button/delete-button.component';
+import { MySearchFieldComponent } from "../../../../shared/components/my-search-field/my-search-field.component";
 
 @Component({
   selector: 'app-utensils',
@@ -11,7 +12,8 @@ import { DeleteButtonComponent } from '../../../../shared/components/buttons/del
     EditButtonComponent,
     ShareButtonComponent,
     DeleteButtonComponent,
-  ],
+    MySearchFieldComponent
+],
   templateUrl: './utensils.component.html',
   styleUrl: './utensils.component.scss',
 })

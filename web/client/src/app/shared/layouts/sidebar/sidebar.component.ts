@@ -11,7 +11,7 @@ import { NgIcon } from '@ng-icons/core';
 export class SidebarComponent {
   sideItems = [
     { name: 'Dashboard', icon: 'matDashboardOutline', to: '' },
-    { name: 'Orders', icon: 'matFeaturedPlayListOutline', to: '' },
+    { name: 'Orders', icon: 'matFeaturedPlayListOutline', to: 'orders' },
     { name: 'Products', icon: 'matLocalPizzaOutline', to: 'products' },
     { name: 'Food Bank', icon: 'matFoodBankOutline', to: 'ingredients' },
     { name: 'Utensils', icon: 'hugeKnife02', to: 'utensils' },

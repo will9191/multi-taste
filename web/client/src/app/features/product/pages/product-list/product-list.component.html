@@ -3,6 +3,7 @@
     <h2>Products</h2>
     <button class="new" (click)="new()">+ New Product</button>
   </div>
+  <app-my-search-field></app-my-search-field>
   <div class="navigation">
     <div class="navigation-item">All</div>
     <div class="navigation-item">Pizzas</div>
@@ -22,7 +23,7 @@
             <app-view-button></app-view-button>
             <app-edit-button></app-edit-button>
             <app-share-button></app-share-button>
-            <app-delete-button></app-delete-button>
+            <app-delete-button (click)="delete(product.id, product.img, product.name)"></app-delete-button>
           </div>
         </div>
         <div class="ingredients">

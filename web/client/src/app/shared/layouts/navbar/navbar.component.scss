@@ -16,21 +16,7 @@
   gap: 1em;
 }
 
-.search {
-  display: flex;
-  align-items: center;
-  background-color: var(--quaternary-color);
-  border-radius: 5px;
-  padding: 0.3em 0.5em;
-  gap: 0.5em;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-}
 
-.search-input {
-  border: none;
-  outline: none;
-  width: 100%;
-}
 
 .profile-img {
   width: 3em;

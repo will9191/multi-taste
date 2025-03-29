@@ -1,14 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
+import { MySearchFieldComponent } from '../../../shared/components/my-search-field/my-search-field.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-orders',
-  imports: [NgIcon, CommonModule],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.scss',
+  selector: 'app-order-list-fixed',
+  imports: [NgIcon, MySearchFieldComponent, RouterModule],
+  templateUrl: './order-list-fixed.component.html',
+  styleUrl: './order-list-fixed.component.scss'
 })
-export class OrdersComponent implements OnInit {
+export class OrderListFixedComponent implements OnInit {
   ngOnInit(): void {
     this.orders.map((o) => {
       if (o.status == 'Pending') {
@@ -37,7 +38,7 @@ export class OrdersComponent implements OnInit {
 
   orders = [
     {
-      id: 1231,
+      id: 1,
       user: {
         name: 'Tanya Leon',
       },
@@ -55,7 +56,7 @@ export class OrdersComponent implements OnInit {
       ],
     },
     {
-      id: 1232,
+      id: 2,
       user: {
         name: 'Jeffrey Gordan',
       },

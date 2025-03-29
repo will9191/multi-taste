@@ -1,0 +1,142 @@
+.orders-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--septenary-color);
+    padding: 2em 3em;
+  }
+  
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .title {
+    font-weight: 700;
+    font-size: 2em;
+  }
+  
+  .new-order {
+    background-color: var(--tertiary-color);
+    color: var(--quaternary-color);
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding: 0 2em;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .navigation {
+    display: flex;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  
+  .navigation-item {
+    padding: 0em 1.5em;
+    cursor: pointer;
+  }
+  
+  .navigation-item:first-child {
+    color: var(--tertiary-color);
+    border-bottom: 1px solid var(--tertiary-color);
+  }
+  
+  .orders {
+    margin-top: 2em;
+    gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .order {
+    background-color: var(--quaternary-color);
+    padding: 1em;
+  }
+  
+  .order-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .order-person-name {
+    font-weight: 700;
+  }
+  
+  .order-top-right {
+    display: flex;
+    gap: 0.5em;
+  }
+  
+  .order-value {
+    color: var(--tertiary-color);
+    font-weight: 600;
+  }
+  
+  .order-status {
+    padding: 0.1em 1em;
+    font-weight: 600;
+  }
+  
+  .order-status[color_code="Pending"] {
+    color: var(--secondary-color);
+    background-color: rgba(var(--secondary-color-rgb), 0.3);
+  }
+  
+  .order-status[color_code="Done"] {
+    color: var(--tertiary-color);
+    background-color: rgba(var(--tertiary-color-rgb), 0.3);
+  }
+  
+  .order-status[color_code="Cancel"] {
+    color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.3);
+  }
+  
+  .arrow-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  .order-items {
+    margin: 1em 0;
+    gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  
+    .img {
+      width: 3em;
+      height: 3em;
+      border-radius: 100px;
+    }
+  }
+  
+  .order-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+  
+  .btn-details {
+    border: 1px solid var(--quinary-color);
+    display: flex;
+    padding: 0.1em 1em;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+  }

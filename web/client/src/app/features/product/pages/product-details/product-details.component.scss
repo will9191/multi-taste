@@ -1,0 +1,19 @@
+.product {
+
+    .top {
+        display: flex;
+        align-items: center;
+
+        .img {
+            width: 8em;
+            height: 8em;
+            border-radius: 100px;
+
+        }
+
+        .name {
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+    }
+}
