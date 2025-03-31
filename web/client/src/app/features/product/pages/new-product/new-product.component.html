@@ -1,8 +1,8 @@
 <div class="container">
   <mat-horizontal-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="formGroup.get('productType')!">
+    <mat-step class="principal" [stepControl]="formGroup.get('productType')!">
       <form [formGroup]="formGroup">
-        <h2>What you want to add to menu?</h2>
+        <h2 class="question">What you want to add to menu?</h2>
         <ul class="selectClass">
           @for (type of productTypes; track $index) {
           <li class="optionClass">
@@ -82,7 +82,7 @@
             />
             <label class="label-field">Price with Discount</label>
           </div>
-          <h4>Ingredients to be used</h4>
+          <div class="to-be-used-title">Ingredients to be used</div>
           <div class="ingredients-to-be-used">
             @for (ingredient of ingredientsList; track $index) {
             <div
@@ -97,25 +97,31 @@
             @for (ingredient of ingredientsFormArray().controls; track $index) {
             <div class="ingredient" [formGroupName]="$index">
               <div>{{ ingredient.value.name }}</div>
-              <div>
-                <input
-                  type="range"
-                  formControlName="weight"
-                  [value]="ingredient.value.weight"
-                  min="0"
-                  max="100"
-                  step="10"
-                />
+
+              <input
+                type="range"
+                formControlName="weight"
+                [value]="ingredient.value.weight"
+                min="0"
+                max="1500"
+                step="10"
+              />
+              <div class="quantity">
                 <input
                   type="number"
                   formControlName="weight"
                   [value]="ingredient.value.weight"
-                  min="0"
-                  max="100"
+                  class="input"
                 />
+
+                <div class="measure">g</div>
               </div>
-              <div>g</div>
-              <div (click)="removeToIngredients(ingredient.value)">X</div>
+              <div
+                class="remove"
+                (click)="removeToIngredients(ingredient.value)"
+              >
+                X
+              </div>
             </div>
             }
           </div>

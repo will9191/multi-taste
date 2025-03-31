@@ -1,6 +1,13 @@
 .container {
   padding: 1em 1.5em;
   font-size: 1.2em;
+  overflow-y: auto;
+  max-height: 80vh;
+  min-width: 560px;
+}
+
+.question {
+  text-align: center;
 }
 
 .inputClass {
@@ -58,6 +65,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.7);
+  }
 }
 
 .form-field {
@@ -117,7 +129,13 @@
   border: 1px solid rgb(41, 133, 255);
 }
 
-.ingredients-to-be-used{
+.to-be-used-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin: 0.3em 0;
+}
+
+.ingredients-to-be-used {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
@@ -139,5 +157,42 @@
 }
 
 .ingredients-list {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    word-break: break-all;
+    justify-items: center;
+    width: 100%;
+    gap: 0.5em;
+
+    .input {
+      border: none;
+      border-bottom: 1px solid var(--quinary-color);
+      outline: none;
+      border-bottom-left-radius: 15px;
+      text-align: right;
+      max-width: 5em;
+    }
+
+    .quantity {
+      display: flex;
+      gap: 0.3em;
+
+      .measure {
+      }
+    }
+  }
+
+  .ingredient > :not(.remove) {
+    flex: 1;
+  }
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
 }

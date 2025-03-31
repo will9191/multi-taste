@@ -91,6 +91,36 @@ export class NewProductComponent {
       name: 'Cheese',
       quantity: 0,
     },
+    {
+      id: 4,
+      name: 'Chicken',
+      quantity: 0,
+    },
+    {
+      id: 5,
+      name: 'Tomato',
+      quantity: 0,
+    },
+    {
+      id: 6,
+      name: 'Cheese',
+      quantity: 0,
+    },
+    {
+      id: 7,
+      name: 'Chicken',
+      quantity: 0,
+    },
+    {
+      id: 8,
+      name: 'Tomato',
+      quantity: 0,
+    },
+    {
+      id: 9,
+      name: 'Cheese',
+      quantity: 0,
+    },
   ];
 
   ingredientsFormArray(): FormArray {
@@ -100,6 +130,7 @@ export class NewProductComponent {
   addToIngredients(ingredient: any) {
     this.ingredientsFormArray().push(
       this.fb.group({
+        id: [ingredient.id, Validators.required],
         name: [ingredient.name, Validators.required],
         weight: [0, [Validators.required, Validators.min(1)]],
       })
@@ -112,7 +143,7 @@ export class NewProductComponent {
 
   isUsed(ingredient: any): boolean {
     return this.ingredientsFormArray().controls?.some(
-      (cntrl) => cntrl.value.name === ingredient.name
+      (cntrl) => cntrl.value.id === ingredient.id
     );
   }
 }
