@@ -1,6 +1,9 @@
 package com.wpizza.api.domain.product;
 
+import com.wpizza.api.domain.ingredient.Ingredient;
+
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 public class Product {
@@ -10,6 +13,8 @@ public class Product {
     private BigDecimal price;
     private BigDecimal discount;
     private BigDecimal discountPrice;
+    private List<Ingredient> ingredients;
+    private int volume;
 
     public UUID getId() {
         return id;
@@ -57,5 +62,21 @@ public class Product {
 
     public void setDiscountPrice(BigDecimal discountPrice) {
         this.discountPrice = discountPrice;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 }
