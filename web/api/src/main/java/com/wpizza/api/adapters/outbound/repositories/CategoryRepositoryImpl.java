@@ -8,6 +8,9 @@ import jdk.jfr.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.UUID;
+
 @Repository
 public class CategoryRepositoryImpl implements CategoryRepository {
     private final JpaCategoryRepository jpaCategoryRepository;
@@ -23,5 +26,16 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         JpaCategoryEntity categoryEntity = new JpaCategoryEntity(category);
         this.jpaCategoryRepository.save(categoryEntity);
         return mapper.jpaToDomain(categoryEntity);
+    }
+
+    @Override
+    public List<Category> findAll() {
+        List<JpaCategoryEntity> jpaCategoryEntities = this.jpaCategoryRepository.findAll();
+        return mapper.jpaToDomainList(jpaCategoryEntities);
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        jpaCategoryRepository.deleteById(id);
     }
 }

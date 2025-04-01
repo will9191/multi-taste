@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = ProductMapper.class)
 public interface CategoryMapper {
     @Mappings({
@@ -28,10 +30,12 @@ public interface CategoryMapper {
     CategoryResponseDTO entityToDTO(Category entity);
 
     @Mappings({
-            @Mapping(target = "id", ignore = true),
+            @Mapping(source = "jpa.id", target = "id"),
             @Mapping(source = "jpa.name", target = "name"),
             @Mapping(source = "jpa.slug", target = "slug"),
             @Mapping(source = "jpa.products", target = "products")
     })
     Category jpaToDomain(JpaCategoryEntity jpa);
+
+    List<Category> jpaToDomainList(List<JpaCategoryEntity> jpa);
 }

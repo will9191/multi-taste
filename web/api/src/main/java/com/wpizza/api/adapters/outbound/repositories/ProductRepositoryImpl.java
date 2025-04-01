@@ -6,22 +6,20 @@ import com.wpizza.api.domain.product.ProductRepository;
 import com.wpizza.api.utils.mappers.ProductMapper;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-
+@Repository
+@RequiredArgsConstructor
 public class ProductRepositoryImpl implements ProductRepository {
     private final JpaProductRepository jpaProductRepository;
-    @Autowired
-    private ProductMapper mapper;
-
-    public ProductRepositoryImpl(JpaProductRepository jpaProductRepository) {
-        this.jpaProductRepository = jpaProductRepository;
-    }
+    private final ProductMapper mapper;
 
     @Override
     public Product save(Product product) {

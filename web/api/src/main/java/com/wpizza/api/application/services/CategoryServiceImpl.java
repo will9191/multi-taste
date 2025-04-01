@@ -9,13 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryUseCases {
     private final CategoryRepository repository;
-
-    @Autowired
-    private  CategoryMapper mapper;
+    private final CategoryMapper mapper;
 
 
     @Override
@@ -23,5 +24,15 @@ public class CategoryServiceImpl implements CategoryUseCases {
         Category category = mapper.dtoToEntity(dto);
 
         return repository.save(category);
+    }
+
+    @Override
+    public List<Category> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
     }
 }

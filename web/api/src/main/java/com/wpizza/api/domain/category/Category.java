@@ -2,6 +2,7 @@ package com.wpizza.api.domain.category;
 
 import com.wpizza.api.domain.product.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class Category {
         this.id = id;
         this.name = name;
         this.slug = slug;
-        this.products = products;
+        this.products = new ArrayList<>();
     }
 
     public UUID getId() {
