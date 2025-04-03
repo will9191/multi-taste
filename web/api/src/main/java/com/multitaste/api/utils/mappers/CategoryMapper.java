@@ -1,10 +1,10 @@
 package com.multitaste.api.utils.mappers;
 
 
-import com.multitaste.api.adapters.outbound.entities.JpaCategoryEntity;
-import com.multitaste.api.domain.category.Category;
-import com.multitaste.api.domain.category.CategoryRequestDTO;
-import com.multitaste.api.domain.category.CategoryResponseDTO;
+import com.multitaste.api.dto.request.CategoryRequestDTO;
+import com.multitaste.api.dto.response.CategoryResponseDTO;
+
+import com.multitaste.api.entities.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -29,13 +29,5 @@ public interface CategoryMapper {
     })
     CategoryResponseDTO entityToDTO(Category entity);
 
-    @Mappings({
-            @Mapping(source = "jpa.id", target = "id"),
-            @Mapping(source = "jpa.name", target = "name"),
-            @Mapping(source = "jpa.slug", target = "slug"),
-            @Mapping(source = "jpa.products", target = "products")
-    })
-    Category jpaToDomain(JpaCategoryEntity jpa);
-
-    List<Category> jpaToDomainList(List<JpaCategoryEntity> jpa);
+    List<Category> entityToDTOList(List<Category> jpa);
 }
