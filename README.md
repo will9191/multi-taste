@@ -1,8 +1,8 @@
 ![Logo](https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.webp)
 
-# W Pizza (in development)
+# Multi Taste (in development)
 
-🍕 W Pizza is a project that automates processes in a pizzeria.
+😋 Multi Taste is a project that automates processes for ordering food.
 
 🧑🏾‍💻 It has a web-based part, responsible for gathering all management information, which is used by the owner and employees. It will receive new orders that will be produced. It also has a dashboard to display comparisons of order numbers between months and other important information.
 
