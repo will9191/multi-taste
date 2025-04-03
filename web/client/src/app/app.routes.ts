@@ -18,7 +18,7 @@ export const routes: Routes = [
       {
         path: 'products',
         component: ProductListComponent,
-        title: 'Products - W Pizza',
+        title: 'Products',
       },
       {
         path: 'products/1',
@@ -26,7 +26,7 @@ export const routes: Routes = [
       },
       {
         path: 'orders',
-        component: OrderListComponent, title: 'Orders - W Pizza'
+        component: OrderListComponent, title: 'Orders'
       }, {
         path: 'orders/1',
         component: OrderDetailsComponent
@@ -34,17 +34,17 @@ export const routes: Routes = [
       {
         path: 'ingredients',
         component: IngredientListComponent,
-        title: 'Ingredients - W Pizza',
+        title: 'Ingredients',
       },
       {
         path: 'utensils',
         component: UtensilsComponent,
-        title: 'Utensils - W Pizza',
+        title: 'Utensils',
       },
       {
         path: 'employees',
         component: EmployeesComponent,
-        title: 'Employees - W Pizza',
+        title: 'Employees',
       },
     ],
   },

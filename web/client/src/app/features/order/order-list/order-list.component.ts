@@ -7,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './order-list.component.scss'
 })
 export class OrderListComponent {
+  orders = [
+    {
+      id: 1,
+      user: {
+        firstName: "Tanya",
+        
+      }
+    }
+  ]
 
 }
