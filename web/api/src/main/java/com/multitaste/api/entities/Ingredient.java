@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -24,6 +25,5 @@ public class Ingredient {
     private UUID id;
     private String name;
     private String imgUrl;
-    private int quantity;
-    private IngredientMeasure measure;
+    private BigDecimal commonAdditionalPrice;
 }

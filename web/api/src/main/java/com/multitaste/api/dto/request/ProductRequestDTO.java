@@ -7,14 +7,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public record ProductBaseRequestDTO(
+public record ProductRequestDTO(
         @NotNull(message = "a") String name,
         @NotNull(message = "a") String imgUrl,
-        @NotNull(message = "a") BigDecimal price,
-        @NotNull(message = "a") BigDecimal discount,
-        @NotNull(message = "a") BigDecimal discountPrice,
+        @NotNull(message = "a") BigDecimal commonPrice,
         @NotNull(message = "a") List<ProductIngredientRequestDTO> ingredients,
         List<UUID> categoriesIds,
-        @NotNull(message = "a") int volume, @NotNull(message = "a") LocalDateTime createdAt
+        @NotNull(message = "a") LocalDateTime createdAt
 ) {
 }

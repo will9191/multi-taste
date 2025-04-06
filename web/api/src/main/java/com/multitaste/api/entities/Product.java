@@ -18,22 +18,17 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public class ProductBase {
+public class Product {
     @Id
     @GeneratedValue
     private UUID id;
     private String name;
     private String imgUrl;
-    private BigDecimal price;
-    private BigDecimal discount;
-    private BigDecimal discountPrice;
+    private BigDecimal commonPrice;
     @OneToMany
     private List<ProductIngredient> ingredients = new ArrayList<>();
     @ManyToMany
     private List<Category> categories;
-    private int volume;
     private LocalDateTime createdAt;
 
     @PrePersist

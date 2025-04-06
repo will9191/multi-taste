@@ -21,6 +21,7 @@ public class Category {
     private UUID id;
     private String name;
     private String slug;
+    private String imgUrl;
     @OneToMany
     private List<Product> products;
 }

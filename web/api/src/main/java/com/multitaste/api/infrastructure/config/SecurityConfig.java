@@ -12,6 +12,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -29,22 +31,26 @@ public class SecurityConfig {
             "/webjars/**",
             "/swagger-ui.html",
             "/category/**",
+            "/ingredient/**",
+            "/product/**",
+            "/store/**",
+
     };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.
                 cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(request -> {
-                    CorsConfiguration corsCfg = new CorsConfiguration();
-                    corsCfg.applyPermitDefaultValues();
-                    corsCfg.addAllowedMethod(CorsConfiguration.ALL);
-                    corsCfg.setAllowCredentials(true);
-                    corsCfg.addAllowedOriginPattern("*");
-                    corsCfg.addAllowedHeader("*");
+                            CorsConfiguration corsCfg = new CorsConfiguration();
+                            corsCfg.applyPermitDefaultValues(); corsCfg.addAllowedOriginPattern("*");
+                            corsCfg.addAllowedMethod(CorsConfiguration.ALL);
+                            corsCfg.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost:8080"));
+                            corsCfg.setAllowedHeaders(List.of("*"));
+                            corsCfg.setAllowCredentials(true);
 
-                    return corsCfg;
-                }
-        ))
+                            return corsCfg;
+                        }
+                ))
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> req

@@ -19,14 +19,26 @@ public class CategoryController {
     private final CategoryService service;
 
     @PostMapping
-    @Operation(summary = "Save new category for products")
+    @Operation(summary = "Save new category")
     public Category save(@RequestBody CategoryRequestDTO dto) {
         return this.service.save(dto);
     }
 
+    @PostMapping("/all")
+    @Operation(summary = "Save new list of categories")
+    public List<Category> saveAll(@RequestBody List<CategoryRequestDTO> dto) {
+        return this.service.saveAll(dto);
+    }
+
+
     @GetMapping
     public List<Category> findAll() {
         return this.service.findAll();
+    }
+
+    @PutMapping
+    public Category edit(@RequestBody CategoryRequestDTO dto) {
+        return this.service.edit(dto);
     }
 
     @DeleteMapping("/{id}")

@@ -2,6 +2,8 @@ package com.multitaste.api.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
+
 public record AddressRequestDTO(
 
         @NotNull String street,
@@ -12,7 +14,8 @@ public record AddressRequestDTO(
         @NotNull     String country,
         String complement,
         @NotNull     String residence,
-        @NotNull    Double longitude,
-        @NotNull     Double latitude
+        @NotNull BigDecimal latitude,
+        @NotNull    BigDecimal longitude
+
 ) {
 }

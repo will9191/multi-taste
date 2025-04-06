@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.webp)
+![Logo](https://raw.githubusercontent.com/will9191/w-pizza/refs/heads/main/web/client/public/logo.png)
 
 # Multi Taste (in development)
 

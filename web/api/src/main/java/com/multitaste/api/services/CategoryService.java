@@ -8,8 +8,11 @@ import java.util.UUID;
 
 public interface CategoryService {
     Category save(CategoryRequestDTO dto);
+    List<Category> saveAll(List<CategoryRequestDTO> dto);
 
     List<Category> findAll();
+
+    Category edit(CategoryRequestDTO dto);
 
     void deleteById(UUID id);
 

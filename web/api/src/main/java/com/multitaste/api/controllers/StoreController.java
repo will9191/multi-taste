@@ -2,6 +2,7 @@ package com.multitaste.api.controllers;
 
 import com.multitaste.api.dto.request.StoreRequestDTO;
 import com.multitaste.api.entities.Store;
+import com.multitaste.api.services.StoreService;
 import com.multitaste.api.services.StoreServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping("/store")
 @RequiredArgsConstructor
 public class StoreController {
-    private final StoreServiceImpl service;
+    private final StoreService service;
 
     @PostMapping
     public void save(StoreRequestDTO dto) {

@@ -2,6 +2,7 @@ package com.multitaste.api.dto.response;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public record AddressResponseDTO(
@@ -14,7 +15,8 @@ public record AddressResponseDTO(
         @NotNull     String country,
         String complement,
         @NotNull     String residence,
-        @NotNull    Double longitude,
-        @NotNull     Double latitude
+@NotNull     BigDecimal latitude,
+        @NotNull BigDecimal longitude
+
 ) {
 }

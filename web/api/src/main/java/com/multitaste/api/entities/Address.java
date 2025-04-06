@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +27,7 @@ public class Address {
     private String country;
     private String complement;
     private String residence;
-    private Double longitude;
-    private Double latitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
+
 }
