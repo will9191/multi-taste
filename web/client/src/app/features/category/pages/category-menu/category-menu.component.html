@@ -1,0 +1,8 @@
+<div class="categories">
+  @for (item of data; track $index) {
+  <div class="category">
+    <img class="img" src="{{ item?.imgUrl }}" alt="" />
+    <div class="name">{{ item?.name }}</div>
+  </div>
+  }
+</div>

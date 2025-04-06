@@ -1,0 +1,17 @@
+.categories {
+  display: flex;
+  gap: 1em;
+  text-align: center;
+  justify-content: center;
+  padding: 2em 0 0 0;
+
+  .category {
+    cursor: pointer;
+    .img {
+      width: 8em;
+      height: 6em;
+    }
+    .name {
+    }
+  }
+}

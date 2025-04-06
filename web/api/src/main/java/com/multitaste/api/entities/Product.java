@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public class Product {
+public class ProductBase {
     @Id
     @GeneratedValue
     private UUID id;
@@ -28,8 +29,10 @@ public class Product {
     private BigDecimal price;
     private BigDecimal discount;
     private BigDecimal discountPrice;
+    @OneToMany
+    private List<ProductIngredient> ingredients = new ArrayList<>();
     @ManyToMany
-    private List<Ingredient> ingredients;
+    private List<Category> categories;
     private int volume;
     private LocalDateTime createdAt;
 

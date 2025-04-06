@@ -1,21 +1,16 @@
 <div class="container">
-  <form class="form">
-    <img class="img" src="logo.webp" alt="" />
-    <app-my-input text="Email"></app-my-input>
-    <app-my-input text="Password" type="password"></app-my-input>
-    <div class="account">
-      <span class="span" routerLink="/register">Forgot my password</span>
-    </div>
-    <button class="btn">Sign In</button>
-  </form>
+  <img class="img" src="logo.png" alt="" />
+  <div class="form-container">
+    <form class="form">
+      <div class="title">Happy to see you again!</div>
+      <div class="sub-title">
+        <div class="sign">Fill the form and get infinite offers</div>
+      </div>
 
-  <div class="users">
-    @for (user of users; track $index) {
-    <div class="user">
-      @if (user.img) {
-      <img class="img" src="{{user.img}}" alt="">} @else {<ng-icon class="icon-img" name="hugeUser"></ng-icon>}
-      <div class="enter">Enter as <span class="role">{{user.role}}</span> </div>
-      <ng-icon class="icon" name="hugeSquareArrowRight02"></ng-icon>
-    </div>}
+      <app-my-input text="Email"></app-my-input>
+      <app-my-input text="Password" type="password"></app-my-input>
+      <button class="btn">Sign In</button>
+      <div class="forgot" routerLink="/register">Forgot your password?</div>
+    </form>
   </div>
 </div>

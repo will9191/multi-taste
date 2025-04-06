@@ -3,16 +3,26 @@ import { LoginComponent } from './core/auth/pages/login/login.component';
 import { LayoutComponent } from './shared/layouts/layout/layout.component';
 import { ProductListComponent } from './features/product/pages/product-list/product-list.component';
 import { IngredientListComponent } from './features/ingredient/pages/ingredient-list/ingredient-list.component';
-import { UtensilsComponent } from './features/utensil/pages/utensils/utensils.component';
-import { EmployeesComponent } from './features/employee/pages/employees/employees.component';
+import { EmployeeListComponent } from './features/employee/pages/employee-list/employee-list.component';
 import { RegisterComponent } from './core/auth/pages/register/register.component';
 import { ProductDetailsComponent } from './features/product/pages/product-details/product-details.component';
 import { OrderListComponent } from './features/order/order-list/order-list.component';
 import { OrderDetailsComponent } from './features/order/order-details/order-details.component';
+import { AuthPageComponent } from './core/auth/pages/auth-page/auth-page.component';
+import { EmailPageComponent } from './core/auth/pages/email-page/email-page.component';
+import { NavComponent } from './shared/layouts/nav/nav.component';
+import { MenuComponent } from './features/product/pages/menu/menu.component';
+import { CategoryMenuComponent } from './features/category/pages/category-menu/category-menu.component';
+import { CategoryListComponent } from './features/category/pages/category-list/category-list.component';
 
 export const routes: Routes = [
   {
     path: '',
+    component: NavComponent,
+    children: [{ path: '', component: CategoryMenuComponent }],
+  },
+  {
+    path: 'dash',
     component: LayoutComponent,
     children: [
       {
@@ -25,32 +35,39 @@ export const routes: Routes = [
         component: ProductDetailsComponent,
       },
       {
+        path: 'categories',
+        component: CategoryListComponent,
+      },
+      {
         path: 'orders',
-        component: OrderListComponent, title: 'Orders'
-      }, {
+        component: OrderListComponent,
+        title: 'Orders',
+      },
+      {
         path: 'orders/1',
-        component: OrderDetailsComponent
+        component: OrderDetailsComponent,
       },
       {
         path: 'ingredients',
         component: IngredientListComponent,
         title: 'Ingredients',
       },
-      {
-        path: 'utensils',
-        component: UtensilsComponent,
-        title: 'Utensils',
-      },
+
       {
         path: 'employees',
-        component: EmployeesComponent,
+        component: EmployeeListComponent,
         title: 'Employees',
       },
     ],
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'auth',
+    component: AuthPageComponent,
+  },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'email-selected',
+    component: EmailPageComponent,
   },
   {
     path: 'register',

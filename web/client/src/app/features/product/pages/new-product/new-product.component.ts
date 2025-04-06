@@ -15,7 +15,6 @@ import {
 @Component({
   selector: 'app-new-product',
   imports: [
-    MyInputComponent,
     CurrencyMaskModule,
     CommonModule,
     MatStepperModule,
@@ -136,6 +135,10 @@ export class NewProductComponent {
       })
     );
   }
+
+  addIngredientQuantity() {}
+
+  removeIngredientQuantity() {}
 
   removeToIngredients(index: number) {
     this.ingredientsFormArray().removeAt(index);

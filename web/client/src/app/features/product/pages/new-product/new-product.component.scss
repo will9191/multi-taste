@@ -174,9 +174,8 @@
       border: none;
       border-bottom: 1px solid var(--quinary-color);
       outline: none;
-      border-bottom-left-radius: 15px;
       text-align: right;
-      max-width: 5em;
+      display: flex;
     }
 
     .quantity {
@@ -191,6 +190,27 @@
   .ingredient > :not(.remove) {
     flex: 1;
   }
+}
+
+.quantity-btn {
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.decrease {
+  color: var(--quaternary-color);
+  background: var(--primary-color);
+}
+
+.increase {
+  color: var(--quaternary-color);
+  background: var(--tertiary-color);
 }
 
 ::ng-deep .mat-horizontal-stepper-header-container {

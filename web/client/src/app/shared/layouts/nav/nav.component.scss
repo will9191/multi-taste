@@ -1,0 +1,47 @@
+.nav {
+  background-color: var(--quaternary-color);
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  box-shadow: 0px 35px 50px 0px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+
+  .logo {
+    width: 5em;
+    border-radius: 100px;
+  }
+
+  .menu {
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 2em 1em;
+    cursor: pointer;
+  }
+
+  .menu::after {
+    border-bottom: 5px solid var(--primary-color);
+    content: "";
+    width: 100px;
+    height: 10px;
+    display: flex;
+  }
+
+  .btn {
+    border: none;
+    outline: none;
+    padding: 1em 3em;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+    color: black;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--quaternary-color);
+    max-width: fit-content;
+  }
+}

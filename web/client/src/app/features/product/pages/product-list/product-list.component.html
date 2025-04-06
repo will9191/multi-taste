@@ -1,7 +1,10 @@
 <div class="container">
   <div class="top-field">
     <h2>Products</h2>
-    <button class="new" (click)="new()">+ New Product</button>
+    <app-create-button
+      (click)="new()"
+      text="+ Create Product"
+    ></app-create-button>
   </div>
   <app-my-search-field></app-my-search-field>
   <div class="navigation">
@@ -12,7 +15,7 @@
   <div class="products">
     @for (product of products; track $index) {
     <div class="product">
-      <img class="img" src="{{ product.img }}" alt="" />
+      <img class="img" src="{{ product.imgUrl }}" alt="" />
       <div class="body">
         <div class="top">
           <div class="left">
@@ -23,15 +26,15 @@
             <app-view-button></app-view-button>
             <app-edit-button></app-edit-button>
             <app-share-button></app-share-button>
-            <app-delete-button (click)="delete(product.id, product.img, product.name)"></app-delete-button>
+            <app-delete-button
+              (click)="delete(product.id, product.imgUrl, product.name)"
+            ></app-delete-button>
           </div>
         </div>
         <div class="ingredients">
           @for (ingredient of product.ingredients; track $index) {
           <div class="ingredient">
-            {{ ingredient.name }}: {{ ingredient.quantity }}/{{
-              ingredient.measure
-            }}
+            {{ ingredient.ingredient.name }}: {{ ingredient.quantity }}
           </div>
           }
         </div>

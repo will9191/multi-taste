@@ -3,19 +3,6 @@
   justify-content: space-between;
 }
 
-.new {
-  background-color: var(--tertiary-color);
-  color: var(--quaternary-color);
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  padding: 1em 2em;
-  display: flex;
-  align-self: center;
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .navigation {
   display: flex;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);

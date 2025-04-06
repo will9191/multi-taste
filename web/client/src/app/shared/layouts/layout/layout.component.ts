@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import {
-  matFoodBankOutline,
-  matFeaturedPlayListOutline,
-  matDashboardOutline,
   matSettingsOutline,
   matNotificationsNoneOutline,
   matSearchOutline,
@@ -11,23 +8,35 @@ import {
   matPeopleAltOutline,
   matKeyboardArrowUpOutline,
 } from '@ng-icons/material-icons/outline';
-import { hugeKnife02 } from '@ng-icons/huge-icons';
+import {
+  matFastfoodSharp,
+  matFoodBankSharp,
+  matFeaturedPlayListSharp,
+  matDashboardSharp,
+  matPersonalVideoSharp,
+  matAnalyticsSharp,
+  matBadgeSharp,matBallotSharp,matSettingsSharp
+} from '@ng-icons/material-icons/sharp';
+import { hugeKnife02, hugeId } from '@ng-icons/huge-icons';
 import { provideIcons } from '@ng-icons/core';
 
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { OrderListFixedComponent } from "../../../features/order/order-list-fixed/order-list-fixed.component";
+import { OrderListFixedComponent } from '../../../features/order/order-list-fixed/order-list-fixed.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [SidebarComponent, NavbarComponent, RouterModule, OrderListFixedComponent],
+  imports: [
+    SidebarComponent,
+    NavbarComponent,
+    RouterModule,
+    OrderListFixedComponent,
+  ],
   viewProviders: [
     provideIcons({
-      matFoodBankOutline,
-      matFeaturedPlayListOutline,
-      matDashboardOutline,
+      matFeaturedPlayListSharp,
+      matDashboardSharp,
       matSettingsOutline,
       matSearchOutline,
       matNotificationsNoneOutline,
@@ -36,9 +45,15 @@ import { OrderListFixedComponent } from "../../../features/order/order-list-fixe
       hugeKnife02,
       matPeopleAltOutline,
       matKeyboardArrowUpOutline,
+      hugeId,
+      matFastfoodSharp,
+      matFoodBankSharp,
+      matPersonalVideoSharp,
+      matAnalyticsSharp,
+      matBadgeSharp,matBallotSharp,matSettingsSharp
     }),
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent { }
+export class LayoutComponent {}

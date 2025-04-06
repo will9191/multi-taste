@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="top-field">
+    <h2>Categories</h2>
+    <app-create-button text="+ Create Category"></app-create-button>
+  </div>
+  <app-my-search-field></app-my-search-field>
+  <div class="categories">
+    @for (category of data; track $index) {
+    <div class="category">
+      <img class="img" src="{{ category.imgUrl }}" alt="" />
+      <div class="body">
+        <div class="top">
+          <div class="left">
+            <div class="name">{{ category.name }}</div>
+          </div>
+          <div class="actions">
+            <app-view-button></app-view-button>
+            <app-edit-button></app-edit-button>
+            <app-share-button></app-share-button>
+            <app-delete-button
+              (click)="delete(category.id, category.imgUrl, category.name)"
+            ></app-delete-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

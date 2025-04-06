@@ -97,30 +97,14 @@
             @for (ingredient of ingredientsFormArray().controls; track $index) {
             <div class="ingredient" [formGroupName]="$index">
               <div>{{ ingredient.value.name }}</div>
-
-              <input
-                type="range"
-                formControlName="weight"
-                [value]="ingredient.value.weight"
-                min="0"
-                max="1500"
-                step="10"
-              />
               <div class="quantity">
+                <div class="quantity-btn decrease">-</div>
                 <input
-                  type="number"
                   formControlName="weight"
                   [value]="ingredient.value.weight"
                   class="input"
                 />
-
-                <div class="measure">g</div>
-              </div>
-              <div
-                class="remove"
-                (click)="removeToIngredients(ingredient.value)"
-              >
-                X
+                <div class="quantity-btn increase">+</div>
               </div>
             </div>
             }

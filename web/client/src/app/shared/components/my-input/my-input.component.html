@@ -1,16 +1,33 @@
 @if (isPriceInput) {
 <div class="form-field">
-  <input class="input-field" type="{{type}}" required currencyMask
-    [options]="{prefix: '$ ', thousands: '.', decimal: ',', allowNegative: false}" />
-  <label class="label-field">{{text}}</label>
-</div>}
-@else if (isDiscountInput) {<div class="form-field">
-  <input class="input-field" type="{{type}}" required currencyMask
-    [options]="{prefix: '% ', decimal: '.', allowNegative: false}" />
-  <label class="label-field">{{text}}</label>
-</div>} @else {
+  <input
+    class="input-field"
+    type="{{ type }}"
+    required
+    currencyMask
+    [options]="{
+      prefix: '$ ',
+      thousands: '.',
+      decimal: ',',
+      allowNegative: false
+    }"
+  />
+  <label class="label-field">{{ text }}</label>
+</div>
+} @else if (isDiscountInput) {
 <div class="form-field">
-  <input class="input-field" type="{{type}}" required />
-  <label class="label-field">{{text}}</label>
+  <input
+    class="input-field"
+    type="{{ type }}"
+    required
+    currencyMask
+    [options]="{ prefix: '% ', decimal: '.', allowNegative: false }"
+  />
+  <label class="label-field">{{ text }}</label>
+</div>
+} @else {
+<div class="form-field">
+  <input class="input-field" type="{{ type }}" required />
+  <label class="label-field">{{ text }}</label>
 </div>
 }

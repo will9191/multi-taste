@@ -1,14 +1,15 @@
 .search {
   display: flex;
   align-items: center;
-  background-color: var(--quaternary-color);
-  border-radius: 5px;
+  background: var(--quaternary-color);
   padding: 0.5em;
   gap: 0.5em;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
+  background: transparent;
   border: none;
   outline: none;
   width: 100%;

@@ -1,8 +1,15 @@
 package com.multitaste.api.services;
 
-import com.multitaste.api.dto.request.ProductRequestDTO;
-import com.multitaste.api.entities.Product;
+import com.multitaste.api.dto.request.ProductBaseRequestDTO;
+import com.multitaste.api.entities.ProductBase;
+import org.springframework.data.domain.Page;
 
-public interface ProductService {
-    Product save (ProductRequestDTO dto);
+import java.util.List;
+
+public interface ProductBaseService {
+    ProductBase save (ProductBaseRequestDTO dto);
+
+    Page<ProductBase> getProducts(String name, String category, int pageNo, int PageSize);
+
+    List<ProductBase> findAll();
 }

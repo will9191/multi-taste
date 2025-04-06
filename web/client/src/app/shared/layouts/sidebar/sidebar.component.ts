@@ -10,11 +10,12 @@ import { NgIcon } from '@ng-icons/core';
 })
 export class SidebarComponent {
   sideItems = [
-    { name: 'Dashboard', icon: 'matDashboardOutline', to: '' },
-    { name: 'Orders', icon: 'matFeaturedPlayListOutline', to: 'orders' },
-    { name: 'Products', icon: 'matLocalPizzaOutline', to: 'products' },
-    { name: 'Food Bank', icon: 'matFoodBankOutline', to: 'ingredients' },
-    { name: 'Utensils', icon: 'hugeKnife02', to: 'utensils' },
-    { name: "Employee's", icon: 'matPeopleAltOutline', to: 'employees' },
+    { name: 'Dashboard', icon: 'matAnalyticsSharp', to: '' },
+    { name: 'Orders', icon: 'matFeaturedPlayListSharp', to: 'orders' },
+    { name: 'Products', icon: 'matFastfoodSharp', to: 'products' },
+    { name: 'Categories', icon: 'matBallotSharp', to: 'categories' },
+    { name: 'Food Bank', icon: 'matFoodBankSharp', to: 'ingredients' },
+    { name: "Employee's", icon: 'matBadgeSharp', to: 'employees' },
+    //hugeId
   ];
 }

@@ -1,13 +1,17 @@
 <div class="container">
   <div class="top">
-    <img routerLink="" class="logo" src="logo.webp" alt="" />
+    <img routerLink="" class="logo" src="logo.png" alt="" />
     <div class="items">
       @for (item of sideItems; track $index) {
-      <ng-icon routerLink="{{item.to}}" class="icon" name="{{ item.icon }}"></ng-icon>
+      <ng-icon
+        routerLink="{{ item.to }}"
+        class="icon"
+        name="{{ item.icon }}"
+      ></ng-icon>
       }
     </div>
   </div>
   <div class="items">
-    <ng-icon class="icon" name="matSettingsOutline"></ng-icon>
+    <ng-icon class="icon" name="matSettingsSharp"></ng-icon>
   </div>
 </div>

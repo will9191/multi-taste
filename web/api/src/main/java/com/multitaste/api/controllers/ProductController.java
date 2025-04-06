@@ -1,21 +1,31 @@
 package com.multitaste.api.controllers;
 
-import com.multitaste.api.dto.request.ProductRequestDTO;
-import com.multitaste.api.entities.Product;
-import com.multitaste.api.services.ProductServiceImpl;
+import com.multitaste.api.dto.request.ProductBaseRequestDTO;
+import com.multitaste.api.entities.ProductBase;
+import com.multitaste.api.services.ProductBaseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
 @RequiredArgsConstructor
-public class ProductController {
-    private final ProductServiceImpl service;
+public class ProductBaseController {
+    private final ProductBaseService service;
 
     @PostMapping
-    public Product save(ProductRequestDTO dto){
+    public ProductBase save(@RequestBody ProductBaseRequestDTO dto){
         return service.save(dto);
+    }
+
+//    @GetMapping
+//    public Page<ProductBase> getProducts(@RequestParam(required = false) String name,@RequestParam(required = false) String category, @RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "25", required = false) int pageSize) {
+//        return service.getProducts(name, category, pageNo, pageSize);
+//    }
+
+    @GetMapping
+    public List<ProductBase> findAll(){
+        return service.findAll();
     }
 }

@@ -1,0 +1,28 @@
+<div class="container">
+  <img class="img" src="logo.png" alt="" />
+  <div class="form-container">
+    <form class="form">
+      <div class="title">Welcome to Multi Taste!</div>
+      <div class="sub-title">
+        <div class="sign">Sign In</div>
+        <div class="enjoy">And enjoy</div>
+      </div>
+
+      <div class="users">
+        @for (user of users; track $index) {
+        <div class="user" routerLink="{{ user.to }}">
+          @if (user.img) {
+          <img class="img" src="{{ user.img }}" alt="" />} @else {<ng-icon
+            class="icon-img"
+            name="{{ user.icon }}"
+          ></ng-icon
+          >}
+          <div class="enter">
+            {{ user.continue }} <span class="role">{{ user.role }}</span>
+          </div>
+        </div>
+        }
+      </div>
+    </form>
+  </div>
+</div>

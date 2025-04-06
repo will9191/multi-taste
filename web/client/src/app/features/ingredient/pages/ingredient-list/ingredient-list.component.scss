@@ -3,19 +3,6 @@
   justify-content: space-between;
 }
 
-.new {
-  background-color: var(--tertiary-color);
-  color: var(--quaternary-color);
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  padding: 1em 2em;
-  display: flex;
-  align-self: center;
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .navigation {
   display: flex;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
@@ -39,6 +26,10 @@
   flex-direction: column;
   gap: 1.5em;
   margin-top: 1em;
+  overflow-y: auto;
+  max-height: 70vh;
+  overflow-x: hidden;
+  padding: 1em 0 1em 0.5em;
 }
 
 .ingredient {
@@ -56,9 +47,8 @@
   width: 5em;
   height: 5em;
   border-radius: 90px;
-  background-color: var(--quinary-color);
-  padding: 0.05em;
-  transform: scale(1.2);
+  transform: scale(1.5);
+  margin-right: 0.5em;
 }
 
 .body {
@@ -73,10 +63,6 @@
   align-items: center;
 }
 
-.name {
-  font-weight: 700;
-}
-
 .left {
   display: flex;
   gap: 1em;
@@ -85,4 +71,8 @@
 .actions {
   display: flex;
   gap: 0.5em;
+}
+
+.name {
+  font-weight: 700;
 }
