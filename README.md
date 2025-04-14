@@ -20,7 +20,19 @@
 **Messaging:** Kafka, Firebase
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/013dc31d-eeab-46ae-8a3b-3f3361465958)
 
-![App Screenshot](https://github.com/user-attachments/assets/df7a7c62-2ae9-41a9-8361-da03655ec0a2)
+![image](https://github.com/user-attachments/assets/161c176d-0b13-4b60-8c51-5df813e08a14)
 
-![App Screenshot](https://github.com/user-attachments/assets/e3902183-282d-4c5e-9a2c-a5ed3cb9e438)
+![image](https://github.com/user-attachments/assets/336f6377-15b0-46ea-bf58-a7220fadeb2c)
+
+![image](https://github.com/user-attachments/assets/4bb88ae7-b82f-49a3-90e0-445ac6f38f5e)
+
+![image](https://github.com/user-attachments/assets/15e24012-c5ef-4f5a-a426-7e16728ecf12)
+
+![image](https://github.com/user-attachments/assets/bb1a0f20-3254-47cf-b6ec-378c814335fb)
+
+![image](https://github.com/user-attachments/assets/bead899e-7358-477f-af06-70ac1113ea57)
+
+![image](https://github.com/user-attachments/assets/8b63b9a2-91d0-4b56-9024-7a0ef128c75e)
+
