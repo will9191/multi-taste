@@ -1,17 +1,17 @@
 package com.multitaste.api.dto.request;
 
-import com.multitaste.api.entities.Ingredient;
-import jakarta.persistence.ManyToOne;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record ProductIngredientRequestDTO(
-        UUID ingredientId,
-        boolean hasIngredient,
-        boolean isQuantityAdjustable,
+public record ProductCustomizationRequestDTO(
+        Long customizationId,
+        boolean includedByDefault,
+        boolean quantityAdjustable,
         int quantity,
-        BigDecimal additionalPrice
+        int additionalQuantity,
+        BigDecimal additionalPrice,
+        int minQuantity,
+        int maxQuantity
 ) {
 
 

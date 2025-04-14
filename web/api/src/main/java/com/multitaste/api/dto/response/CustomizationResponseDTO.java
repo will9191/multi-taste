@@ -3,10 +3,9 @@ package com.multitaste.api.dto.response;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record IngredientResponseDTO(
-        UUID id,
+public record CustomizationResponseDTO(
+        Long id,
         String name,
-        String imgUrl,
-        BigDecimal commonAdditionalPrice
+        String imgUrl
 ) {
 }

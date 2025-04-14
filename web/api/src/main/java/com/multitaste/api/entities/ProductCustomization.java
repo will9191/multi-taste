@@ -15,17 +15,17 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductIngredient {
+public class ProductCustomization {
     @Id
     @GeneratedValue
     private UUID id;
     @ManyToOne
-    private Ingredient ingredient;
-    private boolean hasIngredient;
-    private boolean isQuantityAdjustable;
+    private Customization customization;
+    private boolean includedByDefault;
+    private boolean quantityAdjustable;
     private int quantity;
     private int additionalQuantity;
     private BigDecimal additionalPrice;
-    private int maxQuantity;
     private int minQuantity;
+    private int maxQuantity;
 }

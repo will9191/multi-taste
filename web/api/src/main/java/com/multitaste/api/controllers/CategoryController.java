@@ -1,5 +1,6 @@
 package com.multitaste.api.controllers;
 
+import com.multitaste.api.dto.request.CategoryEditDTO;
 import com.multitaste.api.dto.request.CategoryRequestDTO;
 import com.multitaste.api.entities.Category;
 import com.multitaste.api.services.CategoryService;
@@ -37,12 +38,12 @@ public class CategoryController {
     }
 
     @PutMapping
-    public Category edit(@RequestBody CategoryRequestDTO dto) {
+    public Category edit(@RequestBody CategoryEditDTO dto) {
         return this.service.edit(dto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@RequestParam UUID id) {
+    public void deleteById(@RequestParam Long id) {
         service.deleteById(id);
     }
 

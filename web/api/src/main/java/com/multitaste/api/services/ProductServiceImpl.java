@@ -1,15 +1,9 @@
 package com.multitaste.api.services;
 
-import com.multitaste.api.dto.request.ProductIngredientRequestDTO;
+import com.multitaste.api.dto.request.ProductCustomizationRequestDTO;
 import com.multitaste.api.dto.request.ProductRequestDTO;
-import com.multitaste.api.entities.Category;
-import com.multitaste.api.entities.Ingredient;
-import com.multitaste.api.entities.Product;
-import com.multitaste.api.entities.ProductIngredient;
-import com.multitaste.api.repositories.CategoryRepository;
-import com.multitaste.api.repositories.IngredientRepository;
-import com.multitaste.api.repositories.ProductIngredientRepository;
-import com.multitaste.api.repositories.ProductRepository;
+import com.multitaste.api.entities.*;
+import com.multitaste.api.repositories.*;
 import com.multitaste.api.utils.specifications.ProductSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,18 +12,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository repository;
-    private final ProductIngredientRepository productIngredientRepository;
-    private final IngredientRepository ingredientRepository;
+    private final ProductCustomizationRepository productCustomizationRepository;
+    private final CustomizationRepository customizationRepository;
     private final CategoryRepository categoryRepository;
 
     @Override
@@ -37,50 +29,63 @@ public class ProductServiceImpl implements ProductService {
 
         Product product = new Product();
         product.setName(dto.name());
+        product.setDescription(dto.description());
         product.setImgUrl(dto.imgUrl());
-        product.setCommonPrice(dto.commonPrice());
+        product.setPrice(dto.price());
+        product.setDiscount(dto.discount());
+
+        List<ProductCustomization> productCustomizationList = new ArrayList<>();
+
+        for (ProductCustomizationRequestDTO c : dto.customizations()) {
+            Optional<Customization> optionalCustomization = customizationRepository.findById(c.customizationId());
+
+            if (optionalCustomization.isPresent()) {
+                Customization customization = optionalCustomization.get();
+                ProductCustomization productCustomization = new ProductCustomization();
+                productCustomization.setCustomization(customization);
+                productCustomization.setIncludedByDefault(c.includedByDefault());
+                productCustomization.setQuantityAdjustable(c.quantityAdjustable());
+                productCustomization.setQuantity(c.quantity());
+                productCustomization.setAdditionalQuantity(c.additionalQuantity());
+                productCustomization.setAdditionalPrice(c.additionalPrice());
+                productCustomization.setMinQuantity(c.minQuantity());
+                productCustomization.setMaxQuantity(c.maxQuantity());
+
+                productCustomizationList.add(productCustomization);
+            } else {
+                return null;
+            }
+        }
+        productCustomizationRepository.saveAll(productCustomizationList);
 
         List<Category> categories = new ArrayList<>();
-
-        for (UUID id: dto.categoriesIds()) {
-            Optional<Category> optionalCategory = categoryRepository.findById(id);
+        for (Long id: dto.categoriesIds()){
+            Optional<Category>optionalCategory = categoryRepository.findById(id);
 
             if (optionalCategory.isPresent()){
                 Category category = optionalCategory.get();
                 categories.add(category);
             }
         }
-
         product.setCategories(categories);
 
-
-        List<ProductIngredient> productIngredientsList = new ArrayList<>();
-
-        for (ProductIngredientRequestDTO i: dto.ingredients()) {
-            Optional<Ingredient> optionalIngredient = ingredientRepository.findById(i.ingredientId());
-
-            if (optionalIngredient.isPresent()){
-                Ingredient ingredient = optionalIngredient.get();
-                ProductIngredient productIngredient = new ProductIngredient();
-                productIngredient.setIngredient(ingredient);
-                productIngredient.setHasIngredient(i.hasIngredient());
-                productIngredient.setAdditionalPrice(i.additionalPrice());
-                productIngredient.setQuantityAdjustable(i.isQuantityAdjustable());
-                productIngredient.setQuantity(i.quantity());
-
-                productIngredientsList.add(productIngredient);
-            } else {
-                return null;
-            }
-        }
-
-        productIngredientRepository.saveAll(productIngredientsList);
-
-        product.setIngredients(productIngredientsList);
+        product.setCustomizations(productCustomizationList);
+        product.setNutritionalInformation(dto.nutritionalInformation());
 
         return repository.save(product);
     }
 
+    @Override
+    public List<Product> saveAll(List<ProductRequestDTO> dtoList) {
+        List<Product> products = new ArrayList<>();
+
+        for(ProductRequestDTO dto: dtoList){
+          Product product = save(dto);
+          products.add(product);
+        }
+
+        return products;
+    }
 
 
     @Override

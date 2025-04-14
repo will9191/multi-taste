@@ -12,17 +12,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoreProductIngredient {
+public class StoreProductCustomization {
     @Id
     @GeneratedValue
     private Long id;
     @ManyToOne
     private StoreProduct storeProduct;
     @ManyToOne
-    private ProductIngredient productIngredient;
+    private ProductCustomization productCustomization;
+    private boolean includedByDefault;
+    private boolean quantityAdjustable;
     private int quantity;
     private int additionalQuantity;
     private int additionalPrice;
-    private int maxQuantity;
     private int minQuantity;
+    private int maxQuantity;
+
 }

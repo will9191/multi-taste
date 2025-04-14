@@ -1,2 +1,9 @@
-package com.multitaste.api.repositories;public interface ComboRepository {
+package com.multitaste.api.repositories;
+
+import com.multitaste.api.entities.Combo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ComboRepository extends JpaRepository<Combo, Long> {
 }

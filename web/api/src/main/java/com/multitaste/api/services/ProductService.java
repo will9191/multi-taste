@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ProductService {
     Product save (ProductRequestDTO dto);
+    List<Product> saveAll(List<ProductRequestDTO> dtoList);
 
     Page<Product> getProducts(String name, String category, int pageNo, int PageSize);
 

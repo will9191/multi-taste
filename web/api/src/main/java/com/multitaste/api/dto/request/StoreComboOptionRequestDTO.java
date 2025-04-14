@@ -1,2 +1,7 @@
-package com.multitaste.api.dto.request;public record StoreComboOptionRequestDTO() {
+package com.multitaste.api.dto.request;
+
+public record StoreComboOptionRequestDTO(
+        Long storeId,
+        Long comboOptionId
+) {
 }

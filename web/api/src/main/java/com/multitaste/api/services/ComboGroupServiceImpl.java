@@ -1,2 +1,7 @@
-package com.multitaste.api.services;public class ComboGroupServiceImpl {
+package com.multitaste.api.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ComboGroupServiceImpl implements ComboGroupService{
 }

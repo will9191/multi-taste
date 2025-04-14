@@ -1,2 +1,4 @@
-package com.multitaste.api.services;public interface ComboOptionGroupService {
+package com.multitaste.api.services;
+
+public interface ComboOptionGroupService {
 }

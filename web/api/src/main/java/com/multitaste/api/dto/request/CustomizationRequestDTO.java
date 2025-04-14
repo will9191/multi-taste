@@ -1,11 +1,9 @@
 package com.multitaste.api.dto.request;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
-public record IngredientRequestDTO(
+public record CustomizationRequestDTO(
         String name,
-        String imgUrl,
-        BigDecimal commonAdditionalPrice
+        String imgUrl
 ) {
 }

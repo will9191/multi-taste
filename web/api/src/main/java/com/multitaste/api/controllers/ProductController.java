@@ -19,6 +19,11 @@ public class ProductController {
         return service.save(dto);
     }
 
+    @PostMapping("/all")
+    public List<Product> saveAll(@RequestBody List<ProductRequestDTO> dtoList) {
+        return service.saveAll(dtoList);
+    }
+
 //    @GetMapping
 //    public Page<Product> getProducts(@RequestParam(required = false) String name,@RequestParam(required = false) String category, @RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "25", required = false) int pageSize) {
 //        return service.getProducts(name, category, pageNo, pageSize);

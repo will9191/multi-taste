@@ -1,14 +1,14 @@
 package com.multitaste.api.dto.response;
 
-import com.multitaste.api.entities.Ingredient;
+import com.multitaste.api.entities.Customization;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record ProductIngredientResponseDTO(
+public record ProductCustomizationResponseDTO(
         UUID id,
 
-        Ingredient ingredient,
+        Customization ingredient,
         boolean hasIngredient,
         boolean isQuantityAdjustable,
         int quantity,

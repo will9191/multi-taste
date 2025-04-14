@@ -31,10 +31,10 @@ public class SecurityConfig {
             "/webjars/**",
             "/swagger-ui.html",
             "/category/**",
-            "/ingredient/**",
+            "/customization/**",
             "/product/**",
             "/store/**",
-
+            "/combo/**"
     };
 
     @Bean

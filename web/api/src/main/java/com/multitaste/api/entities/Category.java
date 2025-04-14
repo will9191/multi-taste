@@ -1,5 +1,6 @@
 package com.multitaste.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,11 +18,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Category {
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
     private String slug;
-    private String imgUrl;
-    @OneToMany
-    private List<Product> products;
+    private String icon;
 }

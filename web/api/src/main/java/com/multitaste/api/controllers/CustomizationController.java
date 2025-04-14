@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ingredient")
+@RequestMapping("/customization")
 @RequiredArgsConstructor
-public class IngredientController {
+public class CustomizationController {
     private final CustomizationService service;
 
     @PostMapping

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "product")
+@Table(name = "_product")
 @Entity
 @Getter
 @Setter
@@ -20,17 +20,21 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
+    private String description;
     private String imgUrl;
-    private BigDecimal commonPrice;
-    @OneToMany
-    private List<ProductIngredient> ingredients = new ArrayList<>();
+    private BigDecimal price;
+    private BigDecimal discount;
     @ManyToMany
     private List<Category> categories;
+    @OneToMany
+    private List<ProductCustomization> customizations = new ArrayList<>();
+    @ElementCollection
+    @CollectionTable(name = "product_nutritional_info", joinColumns = @JoinColumn(name = "product_id"))
+    private List<NutritionalInformation> nutritionalInformation;
     private LocalDateTime createdAt;
-
     @PrePersist
     public void setCreatedAt(){
         this.setCreatedAt(LocalDateTime.now());

@@ -8,5 +8,5 @@ import java.util.UUID;
 
 
 @Repository
-public interface ProductIngredientRepository extends JpaRepository<ProductCustomization, UUID> {
+public interface ProductCustomizationRepository extends JpaRepository<ProductCustomization, UUID> {
 }

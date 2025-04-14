@@ -18,11 +18,11 @@ import java.util.UUID;
 public class StoreProduct {
     @Id
     @GeneratedValue
-    private UUID id;
-    @ManyToOne
-    private Product product;
+    private Long id;
     @ManyToOne
     private Store store;
+    @ManyToOne
+    private Product product;
     private BigDecimal price;
     private BigDecimal discount;
 }

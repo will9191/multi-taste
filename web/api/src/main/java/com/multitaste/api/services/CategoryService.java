@@ -1,5 +1,6 @@
 package com.multitaste.api.services;
 
+import com.multitaste.api.dto.request.CategoryEditDTO;
 import com.multitaste.api.dto.request.CategoryRequestDTO;
 import com.multitaste.api.entities.Category;
 
@@ -12,8 +13,8 @@ public interface CategoryService {
 
     List<Category> findAll();
 
-    Category edit(CategoryRequestDTO dto);
+    Category edit(CategoryEditDTO dto);
 
-    void deleteById(UUID id);
+    void deleteById(Long id);
 
 }

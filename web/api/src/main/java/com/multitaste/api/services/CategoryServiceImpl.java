@@ -1,5 +1,6 @@
 package com.multitaste.api.services;
 
+import com.multitaste.api.dto.request.CategoryEditDTO;
 import com.multitaste.api.dto.request.CategoryRequestDTO;
 import com.multitaste.api.entities.Category;
 import com.multitaste.api.repositories.CategoryRepository;
@@ -22,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         category.setName(dto.name());
         category.setSlug(dto.slug());
-        category.setImgUrl(dto.imgUrl());
+        category.setIcon(dto.icon());
 
         return repository.save(category);
     }
@@ -44,12 +45,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category edit(CategoryRequestDTO dto) {
+    public Category edit(CategoryEditDTO dto) {
         Optional<Category> optionalCategory = repository.findById(dto.id());
 
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
-            category.setImgUrl(dto.imgUrl());
             return repository.save(category);
         }
 
@@ -57,7 +57,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteById(UUID id) {
+    public void deleteById(Long id) {
         repository.deleteById(id);
     }
 }

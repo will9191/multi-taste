@@ -5,7 +5,7 @@ import com.multitaste.api.dto.response.ProductCustomizationResponseDTO;
 
 import java.util.List;
 
-public class ProductIngredientServiceImpl implements ProductIngredientService {
+public class ProductCustomizationServiceImpl implements ProductCustomizationService {
     @Override
     public List<ProductCustomizationResponseDTO> saveAll(List<ProductCustomizationRequestDTO> dto) {
         return null;

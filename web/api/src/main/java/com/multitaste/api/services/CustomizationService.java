@@ -1,14 +1,13 @@
 package com.multitaste.api.services;
 
-import com.multitaste.api.dto.request.IngredientRequestDTO;
-import com.multitaste.api.dto.response.IngredientResponseDTO;
-import com.multitaste.api.entities.Ingredient;
+import com.multitaste.api.dto.request.CustomizationRequestDTO;
+import com.multitaste.api.dto.response.CustomizationResponseDTO;
 
 import java.util.List;
 
-public interface IngredientService {
-    IngredientResponseDTO save(IngredientRequestDTO dto);
+public interface CustomizationService {
+    CustomizationResponseDTO save(CustomizationRequestDTO dto);
 
-    List<IngredientResponseDTO> saveAll(List<IngredientRequestDTO> dtoList);
-    List<IngredientResponseDTO> findAll();
+    List<CustomizationResponseDTO> saveAll(List<CustomizationRequestDTO> dtoList);
+    List<CustomizationResponseDTO> findAll();
 }

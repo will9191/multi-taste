@@ -1,9 +1,9 @@
 package com.multitaste.api.services;
 
-import com.multitaste.api.dto.request.IngredientRequestDTO;
-import com.multitaste.api.dto.response.IngredientResponseDTO;
-import com.multitaste.api.entities.Ingredient;
-import com.multitaste.api.repositories.IngredientRepository;
+import com.multitaste.api.dto.request.CustomizationRequestDTO;
+import com.multitaste.api.dto.response.CustomizationResponseDTO;
+import com.multitaste.api.entities.Customization;
+import com.multitaste.api.repositories.CustomizationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,32 +12,29 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class IngredientServiceImpl implements IngredientService {
-    private final IngredientRepository repository;
+public class CustomizationServiceImpl implements CustomizationService {
+    private final CustomizationRepository repository;
 
 
     @Override
-    public IngredientResponseDTO save(IngredientRequestDTO dto) {
+    public CustomizationResponseDTO save(CustomizationRequestDTO dto) {
 
-        Ingredient ingredient = new Ingredient();
+        Customization customization = new Customization();
 
-        ingredient.setName(dto.name());
-        ingredient.setImgUrl(dto.imgUrl());
-        ingredient.setCommonAdditionalPrice(dto.commonAdditionalPrice());
+        customization.setName(dto.name());
+        customization.setImgUrl(dto.imgUrl());
 
+        repository.save(customization);
 
-        repository.save(ingredient);
-
-
-        return new IngredientResponseDTO(ingredient.getId(), ingredient.getName(), ingredient.getImgUrl(), ingredient.getCommonAdditionalPrice());
+        return new CustomizationResponseDTO(customization.getId(), customization.getName(), customization.getImgUrl());
     }
 
     @Override
-    public List<IngredientResponseDTO> saveAll(List<IngredientRequestDTO> dtoList) {
+    public List<CustomizationResponseDTO> saveAll(List<CustomizationRequestDTO> dtoList) {
 
-        List<IngredientResponseDTO> responseDTOList = new ArrayList<>();
-        for (IngredientRequestDTO dto : dtoList) {
-            IngredientResponseDTO response = this.save(dto);
+        List<CustomizationResponseDTO> responseDTOList = new ArrayList<>();
+        for (CustomizationRequestDTO dto : dtoList) {
+            CustomizationResponseDTO response = this.save(dto);
             responseDTOList.add(response);
         }
 
@@ -45,13 +42,13 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public List<IngredientResponseDTO> findAll() {
-        List<Ingredient> ingredients = repository.findAll();
+    public List<CustomizationResponseDTO> findAll() {
+        List<Customization> customizations = repository.findAll();
 
-        List<IngredientResponseDTO> response = new ArrayList<>();
+        List<CustomizationResponseDTO> response = new ArrayList<>();
 
-        for (Ingredient ingredient : ingredients) {
-            IngredientResponseDTO ingredientDTO = new IngredientResponseDTO(ingredient.getId(), ingredient.getName(), ingredient.getImgUrl(), ingredient.getCommonAdditionalPrice());
+        for (Customization customization : customizations) {
+            CustomizationResponseDTO ingredientDTO = new CustomizationResponseDTO(customization.getId(), customization.getName(), customization.getImgUrl());
             response.add(ingredientDTO);
         }
 
