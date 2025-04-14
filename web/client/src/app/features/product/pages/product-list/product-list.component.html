@@ -15,7 +15,10 @@
         <div class="left">
           <div class="name">{{ product.name }}</div>
           <div *ngIf="product.discount != 0">
-            ${{ product.price - product.price * product.discount }}
+            ${{
+              product.price - product.price * product.discount
+                | number : "1.2-2"
+            }}
           </div>
           <div
             [ngClass]="product.discount != 0 ? 'with-discount' : 'no-discount'"
@@ -23,7 +26,9 @@
           >
             $ {{ product.price }}
           </div>
-          <div *ngIf="product.discount != 0">{{ product.discount * 100 }}% off</div>
+          <div *ngIf="product.discount != 0">
+            {{ product.discount * 100 }}% off
+          </div>
         </div>
         <div class="actions">
           <app-view-button></app-view-button>

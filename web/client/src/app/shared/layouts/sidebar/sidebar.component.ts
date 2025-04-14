@@ -13,7 +13,7 @@ export class SidebarComponent {
     { name: 'Dashboard', icon: 'matAnalyticsSharp', to: '' },
     { name: 'Orders', icon: 'matFeaturedPlayListSharp', to: 'orders' },
     { name: 'Combos', icon: 'matFastfoodSharp', to: 'combos' },
-    { name: 'Products', icon: 'matFastfoodSharp', to: 'products' },
+    { name: 'Products', icon: 'hugeHamburger02', to: 'products' },
     { name: 'Categories', icon: 'matBallotSharp', to: 'categories' },
     { name: 'Customizations', icon: 'matFoodBankSharp', to: 'customizations' },
     { name: "Employee's", icon: 'matBadgeSharp', to: 'employees' },

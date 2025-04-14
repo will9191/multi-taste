@@ -15,9 +15,11 @@ import {
   matDashboardSharp,
   matPersonalVideoSharp,
   matAnalyticsSharp,
-  matBadgeSharp,matBallotSharp,matSettingsSharp
+  matBadgeSharp,
+  matBallotSharp,
+  matSettingsSharp,
 } from '@ng-icons/material-icons/sharp';
-import { hugeKnife02, hugeId } from '@ng-icons/huge-icons';
+import { hugeKnife02, hugeId, hugeHamburger02 } from '@ng-icons/huge-icons';
 import { provideIcons } from '@ng-icons/core';
 
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -50,7 +52,10 @@ import { OrderListFixedComponent } from '../../../features/order/order-list-fixe
       matFoodBankSharp,
       matPersonalVideoSharp,
       matAnalyticsSharp,
-      matBadgeSharp,matBallotSharp,matSettingsSharp
+      matBadgeSharp,
+      matBallotSharp,
+      matSettingsSharp,
+      hugeHamburger02,
     }),
   ],
   templateUrl: './layout.component.html',
