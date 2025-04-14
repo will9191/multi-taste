@@ -3,56 +3,63 @@
   font-size: 1.2em;
   overflow-y: auto;
   max-height: 80vh;
-  min-width: 560px;
+  min-width: 100%;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      font-weight: 900;
+      font-size: 1.5em;
+    }
+
+    .icon {
+      cursor: pointer;
+      font-size: 1.5em;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8em;
+
+    .form-field {
+      position: relative;
+      width: 100%;
+    }
+  }
 }
 
-.question {
-  text-align: center;
-}
-
-.inputClass {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip: rect(1px 1px 1px 1px);
-}
-
-.labelClass {
+.btn-save {
   display: flex;
+  width: 100%;
+  background: transparent;
+  padding: 0.5em 1em;
   justify-content: center;
-  align-items: center;
-  padding: 0.4rem 3rem;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.selectClass {
-  list-style: none;
-  gap: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 0;
+.save {
 }
 
-.optionClass .labelClass {
-  border: 1px solid white;
+.save-inactive {
+  pointer-events: none;
+  opacity: 0.6;
 }
 
-.optionClass:has(input:checked) .labelClass {
-  border: 1px solid black;
-}
-
-.optionClass:hover .labelClass {
-  border: 1px solid black;
-}
-
-.fields {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 0.8em;
-}
-
-.ingredient {
+.left {
   display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .remove {
@@ -72,9 +79,9 @@
   }
 }
 
-.form-field {
-  position: relative;
-  width: 100%;
+.textarea-field {
+  height: 5em;
+  resize: none;
 }
 
 .input-field {
@@ -82,8 +89,9 @@
   width: 100%;
   box-sizing: border-box;
   outline: none;
-  border-radius: 5px;
-  border: 1px solid var(--quinary-color);
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  background: transparent;
 }
 
 .label-field {
@@ -99,95 +107,129 @@
 .input-field:focus + .label-field,
 .input-field:valid + .label-field {
   top: -10px;
-  background: var(--quaternary-color);
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.btns {
-  display: flex;
-  gap: 0.5em;
-  justify-content: space-between;
-  margin-top: 1em;
-}
+.categories {
+  position: relative;
+  .selection {
+    .search {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--quinary-color);
+      padding: 0.5em 0.3em;
+      border-radius: 5px;
+      justify-content: space-between;
 
-.btn {
-  padding: 0.5em 3em;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        width: 100%;
+      }
+    }
 
-.btn-prev {
-  border: 1px solid var(--quinary-color);
-  opacity: 0.6;
-}
-
-.btn-next {
-  color: rgb(41, 133, 255);
-  border: 1px solid rgb(41, 133, 255);
-}
-
-.to-be-used-title {
-  font-weight: 600;
-  font-size: 1.1em;
-  margin: 0.3em 0;
-}
-
-.ingredients-to-be-used {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-
-  .ingredient {
-    border: 1px solid var(--quinary-color);
-    border-radius: 8px;
-    padding: 0.1em 0.8em;
-    cursor: pointer;
-  }
-
-  .inative {
-    border: 1px solid var(--quinary-color);
-    border-radius: 8px;
-    padding: 0.1em 0.8em;
-    pointer-events: none;
-    opacity: 0.5;
+    .category {
+      display: flex;
+      gap: 0.5em;
+      padding: 0.3em 0;
+    }
   }
 }
 
-.ingredients-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+.customizations {
+  .selection {
+    position: relative;
 
-  .ingredient {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    .search {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--quinary-color);
+      padding: 0.5em 0.3em;
+      border-radius: 5px;
+      justify-content: space-between;
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        width: 100%;
+      }
+    }
+
+    .to-be-used-list {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 200px;
+      position: absolute;
+      z-index: 100;
+
+      .item {
+        border-bottom: 0.01px solid var(--quinary-color);
+        border-left: 0.01px solid var(--quinary-color);
+        padding: 0.5em 0.2em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        .img {
+          width: 1.5em;
+        }
+
+        .name {
+        }
+      }
+
+      .inative {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+th {
+  text-align: left;
+  font-weight: 500;
+}
+
+table {
+  z-index: 40;
+}
+
+.customizations-list {
+  .customization {
     word-break: break-all;
-    justify-items: center;
     width: 100%;
     gap: 0.5em;
 
-    .input {
-      border: none;
-      border-bottom: 1px solid var(--quinary-color);
-      outline: none;
-      text-align: right;
+    .group {
       display: flex;
+      align-items: center;
+      gap: 0.5em;
+      .img {
+        width: 1.5em;
+      }
     }
 
     .quantity {
       display: flex;
       gap: 0.3em;
+      align-items: center;
 
-      .measure {
+      .input {
+        border: none;
+        outline: none;
+        text-align: right;
+        display: flex;
       }
     }
   }
 
-  .ingredient > :not(.remove) {
+  .customization > :not(.remove) {
     flex: 1;
   }
 }
@@ -201,18 +243,40 @@
   border-radius: 100px;
   font-size: 1.2em;
   cursor: pointer;
+  background: var(--senary-color);
 }
 
 .decrease {
-  color: var(--quaternary-color);
-  background: var(--primary-color);
+  color: var(--octanary-color);
 }
 
 .increase {
-  color: var(--quaternary-color);
-  background: var(--tertiary-color);
+  color: var(--tertiary-color);
 }
 
 ::ng-deep .mat-horizontal-stepper-header-container {
   display: none !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  padding: 0.3em 1em;
+  display: flex;
+  border-radius: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.btn-choice-yes {
+  color: var(--tertiary-color);
+  border: 2px solid var(--tertiary-color);
+}
+
+.btn-choice-no {
+  color: var(--octanary-color);
+  border: 2px solid var(--octanary-color);
 }

@@ -12,10 +12,10 @@ export class SidebarComponent {
   sideItems = [
     { name: 'Dashboard', icon: 'matAnalyticsSharp', to: '' },
     { name: 'Orders', icon: 'matFeaturedPlayListSharp', to: 'orders' },
+    { name: 'Combos', icon: 'matFastfoodSharp', to: 'combos' },
     { name: 'Products', icon: 'matFastfoodSharp', to: 'products' },
     { name: 'Categories', icon: 'matBallotSharp', to: 'categories' },
-    { name: 'Food Bank', icon: 'matFoodBankSharp', to: 'ingredients' },
+    { name: 'Customizations', icon: 'matFoodBankSharp', to: 'customizations' },
     { name: "Employee's", icon: 'matBadgeSharp', to: 'employees' },
-    //hugeId
   ];
 }

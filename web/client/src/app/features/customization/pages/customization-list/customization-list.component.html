@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="top-field">
+    <h2>Customizations</h2>
+    <app-create-button text="+ Create Ingredient"></app-create-button>
+  </div>
+  <app-my-search-field></app-my-search-field>
+  <div class="customizations">
+    @for (ingredient of ingredients; track $index) {
+    <div class="customization">
+      <img class="img" src="{{ ingredient.imgUrl }}" alt="" />
+      <div class="top">
+        <div class="left">
+          <div class="name">{{ ingredient.name }}</div>
+        </div>
+        <div class="actions">
+          <app-view-button></app-view-button>
+          <app-info-button></app-info-button>
+          <app-share-button></app-share-button>
+          <app-delete-button (click)="delete()"></app-delete-button>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+</div>

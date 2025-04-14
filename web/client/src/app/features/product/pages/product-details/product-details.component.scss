@@ -1,19 +1,53 @@
 .product {
+  width: 100%;
+  .top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5em 2em 0.5em 1em;
 
-    .top {
-        display: flex;
-        align-items: center;
-
-        .img {
-            width: 8em;
-            height: 8em;
-            border-radius: 100px;
-
-        }
-
-        .name {
-            font-size: 1.6em;
-            font-weight: 700;
-        }
+    .img {
+      width: 5em;
+      height: 5em;
     }
+
+    .name {
+      font-size: 1.6em;
+      font-weight: 700;
+    }
+
+    .edit {
+      margin: auto;
+      margin-right: 0;
+      cursor: pointer;
+    }
+  }
+
+  .middle {
+    .customizations {
+      .customization {
+        .img {
+          width: 3em;
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  display: flex;
+  width: 100%;
+  background: transparent;
+  padding: 0.5em 1em;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save {
+}
+
+.save-inactive {
+  pointer-events: none;
+  opacity: 0.6;
 }

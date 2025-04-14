@@ -5,10 +5,12 @@
   align-items: center;
   height: 100vh !important;
   flex-direction: column;
+  background-color: #b99f68;
 }
 
 .img {
   width: 100%;
+  max-height: 100vh;
 }
 
 .form-container {
@@ -17,7 +19,7 @@
   background: var(--quaternary-color);
   justify-content: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; padding: 0 1.5em 0 0;
 }
 
 .form {

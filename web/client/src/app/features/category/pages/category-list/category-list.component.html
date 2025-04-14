@@ -7,7 +7,9 @@
   <div class="categories">
     @for (category of data; track $index) {
     <div class="category">
-      <img class="img" src="{{ category.imgUrl }}" alt="" />
+      <div class="img" alt="">
+        {{ category.icon }}
+      </div>
       <div class="body">
         <div class="top">
           <div class="left">
@@ -15,7 +17,7 @@
           </div>
           <div class="actions">
             <app-view-button></app-view-button>
-            <app-edit-button></app-edit-button>
+            <app-info-button></app-info-button>
             <app-share-button></app-share-button>
             <app-delete-button
               (click)="delete(category.id, category.imgUrl, category.name)"

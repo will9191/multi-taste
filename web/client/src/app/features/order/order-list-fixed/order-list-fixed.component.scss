@@ -4,7 +4,9 @@
   top: 0;
   bottom: 0;
   background-color: var(--septenary-color);
-  padding: 2em 3em;
+  padding: 1em 2em;
+  margin: 2em 1em 2em 0em;
+  border-radius: 15px;
 }
 
 .top {
@@ -44,6 +46,7 @@
 .order {
   background-color: var(--quaternary-color);
   padding: 1em;
+  border-radius: 10px;
 }
 
 .order-top {

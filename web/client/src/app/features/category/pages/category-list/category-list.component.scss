@@ -22,8 +22,8 @@
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5em;
   margin-top: 1em;
   overflow-y: auto;
@@ -34,11 +34,11 @@
 
 .category {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: var(--quaternary-color);
-  border-radius: 20px;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 25px;
   width: 100%;
   padding: 0.5em 0.3em;
 }
@@ -47,8 +47,11 @@
   width: 5em;
   height: 5em;
   border-radius: 90px;
-  transform: scale(1.5);
+  transform: scale(3.5);
   margin-right: 0.5em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .body {
@@ -59,6 +62,7 @@
 
 .top {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -71,6 +75,7 @@
 .actions {
   display: flex;
   gap: 0.5em;
+  margin-top: 0.8em;
 }
 
 .name {

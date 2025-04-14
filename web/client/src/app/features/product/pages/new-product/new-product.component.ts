@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MyInputComponent } from '../../../../shared/components/my-input/my-input.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { CommonModule } from '@angular/common';
-import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { MatStepper } from '@angular/material/stepper';
 import {
   FormArray,
   FormBuilder,
@@ -11,50 +11,63 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CategoryService } from '../../../category/category.service';
+import { CustomizationService } from '../../../customization/customization.service';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  matKeyboardArrowDownSharp,
+  matKeyboardArrowUpSharp,
+  matCloseSharp,
+} from '@ng-icons/material-icons/sharp';
 
 @Component({
   selector: 'app-new-product',
   imports: [
     CurrencyMaskModule,
     CommonModule,
-    MatStepperModule,
     ReactiveFormsModule,
     FormsModule,
+    NgIcon,
+  ],
+  viewProviders: [
+    provideIcons({
+      matKeyboardArrowDownSharp,
+      matKeyboardArrowUpSharp,
+      matCloseSharp,
+    }),
   ],
   templateUrl: './new-product.component.html',
   styleUrl: './new-product.component.scss',
 })
-export class NewProductComponent {
-  productTypes = [
-    {
-      id: 1,
-      name: 'Pizza 🍕',
-    },
-    {
-      id: 2,
-      name: 'Drink 🥤',
-    },
-  ];
-
+export class NewProductComponent implements OnInit {
   formGroup: FormGroup;
+  changed = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private categoryService: CategoryService,
+    private customizationService: CustomizationService
+  ) {
     this.formGroup = this.fb.group({
-      productType: [null, Validators.required],
+      categoryId: [null, Validators.required],
       name: ['', [Validators.required]],
-      price: [0, [Validators.required, Validators.min(0)]],
-      discount: [0, [Validators.min(0), Validators.max(100)]],
-      discountPrice: [0, Validators.required],
-      ingredients: this.fb.array([]),
-      volume: [''],
+      description: ['', [Validators.required]],
+      price: [null, [Validators.required, Validators.min(0)]],
+      discount: [null, [Validators.min(0), Validators.max(100)]],
+      customizations: this.fb.array([]),
     });
+  }
+
+  ngOnInit(): void {
+    this.getCategories();
+    this.getCustomizations();
   }
 
   selectedType: any;
 
   selectType(type: any, stepper: MatStepper) {
     this.selectedType = type;
-    this.formGroup.patchValue({ productType: type.id });
+    this.formGroup.patchValue({ categoryId: type.id });
     this.resetSpecificFields();
 
     setTimeout(() => stepper.next(), 200);
@@ -62,7 +75,7 @@ export class NewProductComponent {
 
   resetSpecificFields() {
     if (this.selectedType.id === 1) {
-      this.formGroup.setControl('ingredients', this.fb.array([]));
+      this.formGroup.setControl('customizations', this.fb.array([]));
     } else if (this.selectedType === 2) {
       this.formGroup.patchValue({
         volume: '',
@@ -71,82 +84,105 @@ export class NewProductComponent {
   }
 
   add() {
-    console.log(this.formGroup.get(['ingredients']));
+    console.log(this.formGroup.get(['customizations']));
   }
 
-  ingredientsList = [
-    {
-      id: 1,
-      name: 'Chicken',
-      quantity: 0,
-    },
-    {
-      id: 2,
-      name: 'Tomato',
-      quantity: 0,
-    },
-    {
-      id: 3,
-      name: 'Cheese',
-      quantity: 0,
-    },
-    {
-      id: 4,
-      name: 'Chicken',
-      quantity: 0,
-    },
-    {
-      id: 5,
-      name: 'Tomato',
-      quantity: 0,
-    },
-    {
-      id: 6,
-      name: 'Cheese',
-      quantity: 0,
-    },
-    {
-      id: 7,
-      name: 'Chicken',
-      quantity: 0,
-    },
-    {
-      id: 8,
-      name: 'Tomato',
-      quantity: 0,
-    },
-    {
-      id: 9,
-      name: 'Cheese',
-      quantity: 0,
-    },
-  ];
+  categories: any;
 
-  ingredientsFormArray(): FormArray {
-    return this.formGroup.get('ingredients') as FormArray;
+  getCategories() {
+    this.categoryService.getAll().subscribe({
+      next: (data: any) => {
+        this.categories = data;
+      },
+    });
   }
 
-  addToIngredients(ingredient: any) {
-    this.ingredientsFormArray().push(
+  customizations: any;
+
+  getCustomizations() {
+    this.customizationService.findAll().subscribe({
+      next: (data: any) => {
+        this.customizations = data;
+      },
+    });
+  }
+
+  get customizationsArray(): FormArray {
+    return this.formGroup.get('customizations') as FormArray;
+  }
+
+  customizationsFormArray(): FormArray {
+    return this.formGroup.get('customizations') as FormArray;
+  }
+
+  addToCustomizations(customization: any) {
+    this.customizationsFormArray().push(
       this.fb.group({
-        id: [ingredient.id, Validators.required],
-        name: [ingredient.name, Validators.required],
-        weight: [0, [Validators.required, Validators.min(1)]],
+        id: [customization.id, Validators.required],
+        name: [customization.name, Validators.required],
+        imgUrl: [customization.imgUrl, Validators.required],
+        includedByDefault: [true, Validators.required],
+        quantityAdjustable: [true, Validators.required],
+        quantity: [0, [Validators.required, Validators.min(1)]],
+        additionalQuantity: [true, [Validators.required]],
+        additionalPrice: [null, [Validators.required]],
+        minQuantity: [0, Validators.required],
+        maxQuantity: [0, Validators.required],
       })
     );
   }
 
-  addIngredientQuantity() {}
-
-  removeIngredientQuantity() {}
-
-  removeToIngredients(index: number) {
-    this.ingredientsFormArray().removeAt(index);
+  removeToCustomizations(index: number) {
+    this.customizationsFormArray().removeAt(index);
   }
 
-  isUsed(ingredient: any): boolean {
-    return this.ingredientsFormArray().controls?.some(
-      (cntrl) => cntrl.value.id === ingredient.id
+  isUsed(customization: any): boolean {
+    return this.customizationsFormArray().controls?.some(
+      (cntrl) => cntrl.value.id === customization.id
     );
+  }
+
+  includedStatus(index: number): boolean {
+    return this.customizationsFormArray()?.at(index).get('includedByDefault')
+      ?.value;
+  }
+
+  setIncluded(index: number) {
+    const control = this.customizationsFormArray().at(index) as FormGroup;
+    const currentValue = control.get('includedByDefault')?.value;
+    control.get('includedByDefault')?.setValue(!currentValue);
+  }
+
+  adjustableStatus(index: number): boolean {
+    return this.customizationsFormArray()?.at(index).get('quantityAdjustable')
+      ?.value;
+  }
+
+  setQuantityAdjustable(index: number) {
+    const control = this.customizationsFormArray().at(index) as FormGroup;
+    const currentValue = control.get('quantityAdjustable')?.value;
+    control.get('quantityAdjustable')?.setValue(!currentValue);
+  }
+
+  increase(index: number, variable: string) {
+    const control = this.customizationsFormArray().at(index) as FormGroup;
+    const currentQuantity = control.get(variable)?.value || 0;
+    control.get(variable)?.setValue(currentQuantity + 1);
+  }
+
+  decrease(index: number, variable: string) {
+    const control = this.customizationsFormArray().at(index) as FormGroup;
+
+    const currentQuantity = control.get(variable)?.value || 0;
+    if (currentQuantity === 0) {
+      return this.removeToCustomizations(index);
+    }
+    control.get(variable)?.setValue(currentQuantity - 1);
+  }
+
+  isCustomizablesOpen: boolean = false;
+
+  setCustomizationOpen() {
+    this.isCustomizablesOpen = !this.isCustomizablesOpen;
   }
 }

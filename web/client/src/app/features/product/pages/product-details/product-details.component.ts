@@ -1,74 +1,22 @@
-import { Component } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { hugeEdit02 } from '@ng-icons/huge-icons';
 
 @Component({
   selector: 'app-product-details',
-  imports: [],
+  imports: [DatePipe, NgIcon, CommonModule],
+  viewProviders: [
+    provideIcons({
+      hugeEdit02,
+    }),
+  ],
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss'
+  styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent {
-  product = {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuDGCk-3yOOXa-P2hESva-c52_0ca0tyXiSA&s',
-    name: 'Chicken Pizza',
+  constructor(@Inject(MAT_DIALOG_DATA) public product: any) {}
 
-    price: '$25',
-    discountPrice: '',
-    discount: '',
-    ingredients: [
-      {
-        name: 'Chicken',
-        quantity: '0.3',
-        measure: 'kg',
-      },
-      {
-        name: 'Cheese',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      },
-      {
-        name: 'dough',
-        quantity: '0.5',
-        measure: 'kg',
-      }],
-  }
+  changed: boolean = false;
 }

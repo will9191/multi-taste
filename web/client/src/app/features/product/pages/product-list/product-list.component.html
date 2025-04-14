@@ -7,36 +7,31 @@
     ></app-create-button>
   </div>
   <app-my-search-field></app-my-search-field>
-  <div class="navigation">
-    <div class="navigation-item">All</div>
-    <div class="navigation-item">Pizzas</div>
-    <div class="navigation-item">Drinks</div>
-  </div>
   <div class="products">
     @for (product of products; track $index) {
     <div class="product">
       <img class="img" src="{{ product.imgUrl }}" alt="" />
-      <div class="body">
-        <div class="top">
-          <div class="left">
-            <div class="name">{{ product.name }}</div>
-            <div class="price">{{ product.price }}</div>
+      <div class="top">
+        <div class="left">
+          <div class="name">{{ product.name }}</div>
+          <div *ngIf="product.discount != 0">
+            ${{ product.price - product.price * product.discount }}
           </div>
-          <div class="actions">
-            <app-view-button></app-view-button>
-            <app-edit-button></app-edit-button>
-            <app-share-button></app-share-button>
-            <app-delete-button
-              (click)="delete(product.id, product.imgUrl, product.name)"
-            ></app-delete-button>
+          <div
+            [ngClass]="product.discount != 0 ? 'with-discount' : 'no-discount'"
+            class="price"
+          >
+            $ {{ product.price }}
           </div>
+          <div *ngIf="product.discount != 0">{{ product.discount * 100 }}% off</div>
         </div>
-        <div class="ingredients">
-          @for (ingredient of product.ingredients; track $index) {
-          <div class="ingredient">
-            {{ ingredient.ingredient.name }}: {{ ingredient.quantity }}
-          </div>
-          }
+        <div class="actions">
+          <app-view-button></app-view-button>
+          <app-info-button (click)="seeInfo(product)"></app-info-button>
+          <app-share-button></app-share-button>
+          <app-delete-button
+            (click)="delete(product.id, product.imgUrl, product.name)"
+          ></app-delete-button>
         </div>
       </div>
     </div>

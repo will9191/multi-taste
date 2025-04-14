@@ -1,6 +1,44 @@
 <div class="product">
-    <div class="top">
-        <img class="img" src="{{product.img}}" alt="">
-        <div class="name">{{product.name}}</div>
+  <div class="top">
+    <img class="img" src="{{ product?.imgUrl }}" alt="" />
+    <div class="name">{{ product?.name }}</div>
+    <ng-icon class="edit" name="hugeEdit02"></ng-icon>
+  </div>
+  <div class="middle">
+    <div>
+      <div class="description">Description: {{ product?.description }}</div>
+      <div class="price">Price: ${{ product?.price }}</div>
+      <div class="discount">Discount: {{ product?.discount * 10 }}%</div>
+      <div class="date">
+        Created At: {{ product?.createdAt | date : "MMM d, yyyy" }}
+      </div>
+      <div>
+        @for (category of product?.categories; track $index) {
+        <div>{{ category?.icon }}</div>
+        <div>{{ category?.name }}</div>
+        }
+      </div>
     </div>
+    <div>
+      <div class="customizations">
+        @for (customization of product?.customizations; track $index) {
+        <div class="customization">
+          <img
+            class="img"
+            src="{{ customization.customization.imgUrl }}"
+            alt=""
+          />
+          <div>{{ customization.customization.name }}</div>
+          <div>{{ customization.includedByDefault }}</div>
+          <div>{{ customization.quantityAdjustable }}</div>
+          <div>{{ customization.quantity }}</div>
+          <div>{{ customization.additionalPrice }}</div>
+          <div>{{ customization.minQuantity }}</div>
+          <div>{{ customization.maxQuantity }}</div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <button [ngClass]="changed ? 'btn save' : 'btn save-inactive'">Save</button>
 </div>

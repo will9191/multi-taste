@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './core/auth/pages/login/login.component';
 import { LayoutComponent } from './shared/layouts/layout/layout.component';
 import { ProductListComponent } from './features/product/pages/product-list/product-list.component';
-import { IngredientListComponent } from './features/ingredient/pages/ingredient-list/ingredient-list.component';
+import { CustomizationListComponent } from './features/customization/pages/customization-list/customization-list.component';
 import { EmployeeListComponent } from './features/employee/pages/employee-list/employee-list.component';
 import { RegisterComponent } from './core/auth/pages/register/register.component';
 import { ProductDetailsComponent } from './features/product/pages/product-details/product-details.component';
@@ -11,15 +11,14 @@ import { OrderDetailsComponent } from './features/order/order-details/order-deta
 import { AuthPageComponent } from './core/auth/pages/auth-page/auth-page.component';
 import { EmailPageComponent } from './core/auth/pages/email-page/email-page.component';
 import { NavComponent } from './shared/layouts/nav/nav.component';
-import { MenuComponent } from './features/product/pages/menu/menu.component';
-import { CategoryMenuComponent } from './features/category/pages/category-menu/category-menu.component';
 import { CategoryListComponent } from './features/category/pages/category-list/category-list.component';
+import { ComboListComponent } from './features/combo/pages/combo-list/combo-list.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: NavComponent,
-    children: [{ path: '', component: CategoryMenuComponent }],
+    children: [],
   },
   {
     path: 'dash',
@@ -31,8 +30,9 @@ export const routes: Routes = [
         title: 'Products',
       },
       {
-        path: 'products/1',
-        component: ProductDetailsComponent,
+        path: 'combos',
+        component: ComboListComponent,
+        title: 'Combos',
       },
       {
         path: 'categories',
@@ -48,9 +48,9 @@ export const routes: Routes = [
         component: OrderDetailsComponent,
       },
       {
-        path: 'ingredients',
-        component: IngredientListComponent,
-        title: 'Ingredients',
+        path: 'customizations',
+        component: CustomizationListComponent,
+        title: 'Customizations',
       },
 
       {

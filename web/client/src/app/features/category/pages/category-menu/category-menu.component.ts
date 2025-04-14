@@ -20,7 +20,6 @@ export class CategoryMenuComponent implements OnInit {
     this.categoryService.getAll().subscribe({
       next: (data: any) => {
         this.data = data;
-        console.log(data);
       },
     });
   }

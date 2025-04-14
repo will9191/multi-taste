@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="top-field">
+    <h2>Combos</h2>
+    <app-create-button
+      (click)="new()"
+      text="+ Create Combo"
+    ></app-create-button>
+  </div>
+  <app-my-search-field></app-my-search-field>
+  <div class="products">
+    @for (combo of combos; track $index) {
+    <div class="product">
+      <img class="img" src="{{ combo.imgUrl }}" alt="" />
+      <div class="top">
+        <div class="left">
+          <div class="name">{{ combo.name }}</div>
+          <div *ngIf="combo.discount != 0">
+            ${{ combo.price - combo.price * combo.discount }}
+          </div>
+          <div
+            [ngClass]="combo.discount != 0 ? 'with-discount' : 'no-discount'"
+            class="price"
+          >
+            $ {{ combo.price }}
+          </div>
+          <div *ngIf="combo.discount != 0">{{ combo.discount * 100 }}% off</div>
+        </div>
+        <div class="actions">
+          <app-view-button></app-view-button>
+          <app-info-button (click)="seeInfo(combo)"></app-info-button>
+          <app-share-button></app-share-button>
+          <app-delete-button
+            (click)="delete(combo.id, combo.imgUrl, combo.name)"
+          ></app-delete-button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
