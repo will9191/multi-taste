@@ -18,7 +18,11 @@ import {
   matKeyboardArrowDownSharp,
   matKeyboardArrowUpSharp,
   matCloseSharp,
+  matCheckSharp,
+  matCachedSharp,
+  matMinusSharp,
 } from '@ng-icons/material-icons/sharp';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-product',
@@ -34,6 +38,9 @@ import {
       matKeyboardArrowDownSharp,
       matKeyboardArrowUpSharp,
       matCloseSharp,
+      matCheckSharp,
+      matCachedSharp,
+      matMinusSharp,
     }),
   ],
   templateUrl: './new-product.component.html',
@@ -46,7 +53,8 @@ export class NewProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private customizationService: CustomizationService
+    private customizationService: CustomizationService,
+    private ref: MatDialogRef<NewProductComponent>
   ) {
     this.formGroup = this.fb.group({
       categoryId: [null, Validators.required],
@@ -56,6 +64,10 @@ export class NewProductComponent implements OnInit {
       discount: [null, [Validators.min(0), Validators.max(100)]],
       customizations: this.fb.array([]),
     });
+  }
+
+  close() {
+    this.ref.close();
   }
 
   ngOnInit(): void {
@@ -125,7 +137,7 @@ export class NewProductComponent implements OnInit {
         quantityAdjustable: [true, Validators.required],
         quantity: [0, [Validators.required, Validators.min(1)]],
         additionalQuantity: [true, [Validators.required]],
-        additionalPrice: [null, [Validators.required]],
+        additionalPrice: [0, [Validators.required]],
         minQuantity: [0, Validators.required],
         maxQuantity: [0, Validators.required],
       })
@@ -162,22 +174,6 @@ export class NewProductComponent implements OnInit {
     const control = this.customizationsFormArray().at(index) as FormGroup;
     const currentValue = control.get('quantityAdjustable')?.value;
     control.get('quantityAdjustable')?.setValue(!currentValue);
-  }
-
-  increase(index: number, variable: string) {
-    const control = this.customizationsFormArray().at(index) as FormGroup;
-    const currentQuantity = control.get(variable)?.value || 0;
-    control.get(variable)?.setValue(currentQuantity + 1);
-  }
-
-  decrease(index: number, variable: string) {
-    const control = this.customizationsFormArray().at(index) as FormGroup;
-
-    const currentQuantity = control.get(variable)?.value || 0;
-    if (currentQuantity === 0) {
-      return this.removeToCustomizations(index);
-    }
-    control.get(variable)?.setValue(currentQuantity - 1);
   }
 
   isCustomizablesOpen: boolean = false;

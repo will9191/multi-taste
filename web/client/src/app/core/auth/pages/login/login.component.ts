@@ -9,10 +9,11 @@ import {
 } from '@ng-icons/huge-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
+import { FillButtonComponent } from "../../../../shared/components/buttons/fill-button/fill-button.component";
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule, MyInputComponent, NgIcon, MatStepperModule],
+  imports: [RouterModule, MyInputComponent, NgIcon, MatStepperModule, FillButtonComponent],
   viewProviders: [
     provideIcons({ hugeSquareArrowRight02, hugeUser, hugeMail01 }),
   ],

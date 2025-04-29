@@ -53,26 +53,6 @@
   gap: 0.8em;
 }
 
-.btn {
-  border: none;
-  outline: none;
-  padding: 1em 3em;
-  cursor: pointer;
-  border-radius: 10px;
-  width: 100%;
-  color: black;
-  text-align: center;
-}
-
-.login-btn {
-  background-color: var(--primary-color);
-  color: var(--quaternary-color);
-}
-
-.register-btn {
-  border: 1px solid var(--quinary-color);
-}
-
 .account {
   align-self: flex-end;
 }

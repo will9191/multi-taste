@@ -1,13 +1,15 @@
 <div class="container">
   <div class="top">
     <div class="title">Information</div>
-    <ng-icon class="icon" name="matCloseSharp"></ng-icon>
+    <ng-icon (click)="close()" class="icon" name="matCloseSharp"></ng-icon>
   </div>
   <form class="form" [formGroup]="formGroup">
     <div class="fields">
       <div class="left">
         <div>
-          <div>Upload Photo ⬆️</div>
+          <div class="upload">
+            <span>Upload</span> <span>Photo </span><span>⬆️</span>
+          </div>
           <div class="form-field">
             <input class="input-field" formControlName="name" required />
             <label class="label-field">Name</label>
@@ -108,147 +110,88 @@
               }
             </div>
           </div>
-          <table *ngIf="customizationsArray?.length">
-            <thead>
-              <tr>
-                <th>Customization</th>
-                <th>Included By Default</th>
-                <th>Quantity Adjustable</th>
-                <th>Quantity</th>
-                <th>Additional Price</th>
-                <th>Min Quantity</th>
-                <th>Max Quantity</th>
-              </tr>
-            </thead>
-            <tbody class="customizations-list" formArrayName="customizations">
-              @for (customization of customizationsFormArray().controls; track
-              $index) {
-              <tr class="customization" [formGroupName]="$index">
-                <th>
-                  <div class="group">
-                    <img
-                      class="img"
-                      src="{{ customization.value.imgUrl }}"
-                      alt=""
-                    />
-                    <div>
-                      {{ customization.value.name }}
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  <button
+
+          <div class="customization-list" formArrayName="customizations">
+            @for (customization of customizationsFormArray().controls; track
+            $index) {
+            <div class="customization" [formGroupName]="$index">
+              <ng-icon
+                name="matCloseSharp"
+                class="close"
+                (click)="removeToCustomizations($index)"
+              ></ng-icon>
+              <img class="img" src="{{ customization.value.imgUrl }}" alt="" />
+              <div class="middle">
+                <div class="name">
+                  {{ customization.value.name }}
+                </div>
+                <div class="toggle" (click)="setIncluded($index)">
+                  <ng-icon
+                    name="{{
+                      includedStatus($index)
+                        ? 'matCheckSharp'
+                        : ' matCloseSharp'
+                    }}"
                     [ngClass]="
-                      includedStatus($index) ? 'hidden' : 'btn btn-choice-no'
+                      includedStatus($index) ? 'icon inc' : 'icon not-inc'
                     "
-                    (click)="setIncluded($index)"
-                  >
-                    No
-                  </button>
-                  <button
+                  ></ng-icon>
+                  <div>
+                    {{ includedStatus($index) ? "Included" : "Not Included" }}
+                  </div>
+                </div>
+
+                <div class="toggle" (click)="setQuantityAdjustable($index)">
+                  <ng-icon
+                    name="{{
+                      adjustableStatus($index)
+                        ? 'matCachedSharp'
+                        : 'matMinusSharp'
+                    }} "
                     [ngClass]="
-                      !includedStatus($index) ? 'hidden' : 'btn btn-choice-yes'
+                      adjustableStatus($index) ? 'icon adj' : 'icon not-adj'
                     "
-                    (click)="setIncluded($index)"
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <button
-                    [ngClass]="
-                      adjustableStatus($index) ? 'hidden' : 'btn btn-choice-no'
-                    "
-                    (click)="setQuantityAdjustable($index)"
-                  >
-                    No
-                  </button>
-                  <button
-                    [ngClass]="
-                      !adjustableStatus($index)
-                        ? 'hidden'
-                        : 'btn btn-choice-yes'
-                    "
-                    (click)="setQuantityAdjustable($index)"
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <div class="quantity">
-                    <div
-                      class="quantity-btn decrease"
-                      (click)="decrease($index, 'quantity')"
-                    >
-                      -
-                    </div>
-                    <div class="input">{{ customization.value.quantity }}</div>
-                    <div
-                      (click)="increase($index, 'quantity')"
-                      class="quantity-btn increase"
-                    >
-                      +
-                    </div>
+                  ></ng-icon>
+                  <div>
+                    {{
+                      adjustableStatus($index) ? "Adjustable" : "Not Adjustable"
+                    }}
                   </div>
-                </td>
-                <td>
-                  <div class="form-field">
-                    <input
-                      class="input-field"
-                      formControlName="additionalPrice"
-                      required
-                      currencyMask
-                      [options]="{
-                        prefix: '$ ',
-                        thousands: '.',
-                        decimal: ',',
-                        allowNegative: false
-                      }"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div class="quantity">
-                    <div
-                      class="quantity-btn decrease"
-                      (click)="decrease($index, 'minQuantity')"
-                    >
-                      -
-                    </div>
-                    <div class="input">
-                      {{ customization.value.minQuantity }}
-                    </div>
-                    <div
-                      (click)="increase($index, 'minQuantity')"
-                      class="quantity-btn increase"
-                    >
-                      +
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="quantity">
-                    <div
-                      class="quantity-btn decrease"
-                      (click)="decrease($index, 'maxQuantity')"
-                    >
-                      -
-                    </div>
-                    <div class="input">
-                      {{ customization.value.maxQuantity }}
-                    </div>
-                    <div
-                      (click)="increase($index, 'maxQuantity')"
-                      class="quantity-btn increase"
-                    >
-                      +
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              }
-            </tbody>
-          </table>
+                </div>
+              </div>
+
+              <div class="right-fields">
+                <div class="field">
+                  <div>Default Quantity</div>
+                  <input formControlName="quantity" type="number" />
+                </div>
+                <div class="field">
+                  <div>Minimum Quantity</div>
+                  <input formControlName="minQuantity" type="number" />
+                </div>
+                <div class="field">
+                  <div>Maximum Quantity</div>
+                  <input formControlName="maxQuantity" type="number" />
+                </div>
+                <div class="field">
+                  <div>Additional Price</div>
+                  <input
+                    class="input-field"
+                    formControlName="additionalPrice"
+                    required
+                    currencyMask
+                    [options]="{
+                      prefix: '$ ',
+                      thousands: '.',
+                      decimal: ',',
+                      allowNegative: false
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+            }
+          </div>
         </div>
       </div>
     </div>
