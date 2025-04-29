@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ${SERVICE_NAME}-service
+  cloud:
+    config:
+      uri: ${CLOUD_CONFIG_URI}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI}

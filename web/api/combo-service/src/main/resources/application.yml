@@ -1,0 +1,24 @@
+server:
+  port: ${SERVICE_PORT}
+
+spring:
+  config:
+    import:
+      - optional:file:.env[.properties]
+      - optional:configserver:http://localhost:8888
+  application:
+    name: ${SERVICE_NAME}-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: true
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true

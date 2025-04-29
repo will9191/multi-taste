@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  order-db:
+    image: postgres:16
+    container_name: ${SERVICE_NAME}-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${DB_PORT}:5432" # Porta mapeada para o banco
+    networks:
+      - backend
+    volumes:
+      - ${SERVICE_NAME}_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${SERVICE_NAME}-service
+    depends_on:
+      order-db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+    ports:
+      - "${SERVICE_PORT}:8080" # Porta mapeada para o serviço
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  order_data:
