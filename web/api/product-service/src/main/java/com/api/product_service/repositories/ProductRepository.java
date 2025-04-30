@@ -1,5 +1,6 @@
 package com.api.product_service.repositories;
 
+import com.api.product_service.dto.response.ProductResponse;
 import com.api.product_service.entities.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,9 +1,12 @@
 package com.api.category_service.services;
 
-import com.api.category_service.dto.request.CategoryRequestDTO;
+import com.api.category_service.dto.request.CategoryEditRequest;
+import com.api.category_service.dto.request.CategoryRequest;
+import com.api.category_service.dto.response.CategoryResponse;
 import com.api.category_service.entities.Category;
 import com.api.category_service.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,46 +15,60 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements CategoryService{
+@Slf4j
+public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository repository;
 
     @Override
-    public Category save(CategoryRequestDTO dto) {
-        Category category = new Category();
+    public CategoryResponse save(CategoryRequest dto) {
+        Category category = Category.builder()
+                .name(dto.name())
+                .slug(dto.slug())
+                .icon(dto.icon())
+                .build();
 
-        category.setName(dto.name());
-        category.setSlug(dto.slug());
-        category.setIcon(dto.icon());
+        repository.save(category);
+        log.info("Category created successfully");
 
-        return repository.save(category);
+        return new CategoryResponse(category.getId(), category.getName(), category.getSlug(), category.getIcon());
     }
 
     @Override
-    public List<Category> saveAll(List<CategoryRequestDTO> dtoList) {
-        List<Category> categories = new ArrayList<>();
+    public List<CategoryResponse> saveAll(List<CategoryRequest> dtoList) {
+        List<CategoryResponse> categories = new ArrayList<>();
 
-        for (CategoryRequestDTO dto:dtoList) {
-            Category category = this.save(dto);
+        for (CategoryRequest dto : dtoList) {
+            CategoryResponse category = this.save(dto);
             categories.add(category);
         }
         return categories;
     }
 
     @Override
-    public List<Category> findAll() {
-        return repository.findAll();
+    public List<CategoryResponse> findAll() {
+        List<Category> categoriesEntity = repository.findAll();
+
+        List<CategoryResponse> categories = new ArrayList<>();
+
+        for (Category category : categoriesEntity) {
+            categories.add(new CategoryResponse(category.getId(), category.getName(), category.getSlug(), category.getIcon()));
+        }
+
+        return categories;
     }
 
     @Override
-    public Category edit(CategoryRequestDTO dto) {
+    public CategoryResponse edit(CategoryEditRequest dto) {
         Optional<Category> optionalCategory = repository.findById(dto.id());
 
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
-            return repository.save(category);
+            repository.save(category);
+
+            return new CategoryResponse(category.getId(), category.getName(), category.getSlug(), category.getIcon());
         }
 
-        return new Category();
+        return null;
     }
 
     @Override
@@ -60,8 +77,9 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category findById(Long id) {
-        Optional<Category> optionalCategory = repository.findById(id);
-        return optionalCategory.orElse(null);
+    public CategoryResponse findById(Long id) {
+        Category category = repository.findById(id).orElse(null);
+
+        return new CategoryResponse(category.getId(), category.getName(), category.getSlug(), category.getIcon());
     }
 }

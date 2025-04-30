@@ -1,19 +1,20 @@
 package com.api.category_service.services;
 
-import com.api.category_service.dto.request.CategoryRequestDTO;
-import com.api.category_service.entities.Category;
+import com.api.category_service.dto.request.CategoryEditRequest;
+import com.api.category_service.dto.request.CategoryRequest;
+import com.api.category_service.dto.response.CategoryResponse;
 
 import java.util.List;
 
 public interface CategoryService {
-    Category save(CategoryRequestDTO dto);
-    List<Category> saveAll(List<CategoryRequestDTO> dto);
+    CategoryResponse save(CategoryRequest dto);
+    List<CategoryResponse> saveAll(List<CategoryRequest> dto);
 
-    List<Category> findAll();
+    List<CategoryResponse> findAll();
 
-    Category edit(CategoryRequestDTO dto);
+    CategoryResponse edit(CategoryEditRequest dto);
 
     void deleteById(Long id);
 
-    Category findById(Long id);
+    CategoryResponse findById(Long id);
 }

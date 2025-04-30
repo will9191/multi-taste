@@ -1,12 +1,12 @@
 package com.api.product_service.services;
 
-import com.api.product_service.dto.request.ProductCustomizationRequestDTO;
-import com.api.product_service.dto.response.ProductCustomizationResponseDTO;
+import com.api.product_service.dto.request.ProductCustomizationRequest;
+import com.api.product_service.dto.response.ProductCustomizationResponse;
 
 import java.util.List;
 
 public interface ProductCustomizationService {
-    ProductCustomizationResponseDTO findById(Long id);
-    ProductCustomizationResponseDTO save(ProductCustomizationRequestDTO dto);
-    List<ProductCustomizationResponseDTO> saveAll(List<ProductCustomizationRequestDTO> dto);
+    ProductCustomizationResponse findById(Long id);
+    ProductCustomizationResponse save(ProductCustomizationRequest dto);
+    List<ProductCustomizationResponse> saveAll(List<ProductCustomizationRequest> dto);
 }

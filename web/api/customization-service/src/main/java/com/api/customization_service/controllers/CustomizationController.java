@@ -30,7 +30,7 @@ public class CustomizationController {
     }
 
     @GetMapping("/{id}")
-    public CustomizationResponseDTO findById(@PathVariable Long id){
+    public CustomizationResponseDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
 }

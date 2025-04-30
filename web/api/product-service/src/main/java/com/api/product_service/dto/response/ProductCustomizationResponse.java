@@ -2,9 +2,9 @@ package com.api.product_service.dto.response;
 
 import java.math.BigDecimal;
 
-public record ProductCustomizationResponseDTO(
+public record ProductCustomizationResponse(
         Long id,
-        CustomizationResponseDTO customizationResponse,
+        CustomizationResponse customization,
         int quantity,
         BigDecimal additionalPrice,
         int additionalQuantity,

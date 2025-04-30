@@ -1,6 +1,8 @@
 package com.api.category_service.controllers;
 
-import com.api.category_service.dto.request.CategoryRequestDTO;
+import com.api.category_service.dto.request.CategoryEditRequest;
+import com.api.category_service.dto.request.CategoryRequest;
+import com.api.category_service.dto.response.CategoryResponse;
 import com.api.category_service.entities.Category;
 import com.api.category_service.services.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -15,26 +17,28 @@ public class CategoryController {
     private final CategoryService service;
 
     @PostMapping
-
-    public Category save(@RequestBody CategoryRequestDTO dto) {
-        return this.service.save(dto);
+    public CategoryResponse save(@RequestBody CategoryRequest dto) {
+        return service.save(dto);
     }
 
     @PostMapping("/all")
-
-    public List<Category> saveAll(@RequestBody List<CategoryRequestDTO> dto) {
-        return this.service.saveAll(dto);
+    public List<CategoryResponse> saveAll(@RequestBody List<CategoryRequest> dto) {
+        return service.saveAll(dto);
     }
 
-
     @GetMapping
-    public List<Category> findAll() {
-        return this.service.findAll();
+    public List<CategoryResponse> findAll() {
+        return service.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public CategoryResponse getCategoryById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PutMapping
-    public Category edit(@RequestBody CategoryRequestDTO dto) {
-        return this.service.edit(dto);
+    public CategoryResponse edit(@RequestBody CategoryEditRequest dto) {
+        return service.edit(dto);
     }
 
     @DeleteMapping("/{id}")

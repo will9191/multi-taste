@@ -1,11 +1,13 @@
 package com.api.product_service.services;
 
-import com.api.product_service.dto.request.ProductCustomizationRequestDTO;
-import com.api.product_service.dto.response.CustomizationResponseDTO;
-import com.api.product_service.dto.response.ProductCustomizationResponseDTO;
+import com.api.product_service.client.CustomizationClient;
+import com.api.product_service.dto.request.ProductCustomizationRequest;
+import com.api.product_service.dto.response.CustomizationResponse;
+import com.api.product_service.dto.response.ProductCustomizationResponse;
 import com.api.product_service.entities.ProductCustomization;
 import com.api.product_service.repositories.ProductCustomizationRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -15,20 +17,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductCustomizationServiceImpl implements ProductCustomizationService {
     private final ProductCustomizationRepository repository;
-    private WebClient webClient;
+    private final CustomizationClient customizationClient;
 
     @Override
-    public ProductCustomizationResponseDTO findById(Long id) {
+    public ProductCustomizationResponse findById(Long id) {
         ProductCustomization productCustomization = repository.findById(id).orElseThrow(() -> new RuntimeException(""));
 
-        CustomizationResponseDTO customization = webClient
-                .get()
-                .uri("http://localhost:8080/customization/" + productCustomization.getCustomizationId())
-                .retrieve()
-                .bodyToMono(CustomizationResponseDTO.class)
-                .block();
+       ResponseEntity<CustomizationResponse> customizationEntity = customizationClient.getCustomizationById(productCustomization.getId());
+       CustomizationResponse customization = customizationEntity.getBody();
 
-        return new ProductCustomizationResponseDTO(
+        return new ProductCustomizationResponse(
                 productCustomization.getId(),
                 customization,
                 productCustomization.getQuantity(),
@@ -37,12 +35,11 @@ public class ProductCustomizationServiceImpl implements ProductCustomizationServ
                 productCustomization.getMinQuantity(),
                 productCustomization.getMaxQuantity(),
                 productCustomization.isIncludedByDefault()
-
         );
     }
 
     @Override
-    public ProductCustomizationResponseDTO save(ProductCustomizationRequestDTO dto) {
+    public ProductCustomizationResponse save(ProductCustomizationRequest dto) {
         ProductCustomization productCustomization = new ProductCustomization();
         productCustomization.setCustomizationId(dto.customizationId());
         productCustomization.setIncludedByDefault(dto.includedByDefault());
@@ -55,15 +52,10 @@ public class ProductCustomizationServiceImpl implements ProductCustomizationServ
 
         repository.save(productCustomization);
 
-        CustomizationResponseDTO customization = webClient
-                .get()
-                .uri("http://localhost:8080/customization/" + productCustomization.getCustomizationId())
-                .retrieve()
-                .bodyToMono(CustomizationResponseDTO.class)
-                .block();
+        CustomizationResponse customization = customizationClient.getCustomizationById(productCustomization.getId()).getBody();
 
 
-        return new ProductCustomizationResponseDTO(
+        return new ProductCustomizationResponse(
                 productCustomization.getId(),
                 customization,
                 productCustomization.getQuantity(),
@@ -76,7 +68,7 @@ public class ProductCustomizationServiceImpl implements ProductCustomizationServ
     }
 
     @Override
-    public List<ProductCustomizationResponseDTO> saveAll(List<ProductCustomizationRequestDTO> dto) {
+    public List<ProductCustomizationResponse> saveAll(List<ProductCustomizationRequest> dto) {
         return null;
     }
 }
