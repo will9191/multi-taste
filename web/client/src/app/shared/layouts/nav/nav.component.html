@@ -1,8 +1,15 @@
 <nav class="nav">
-  <div><img class="logo" src="logo.png" alt="" /></div>
+  <div class="left">
+    <img class="logo" src="logo.png" alt="" />
+    <app-store-selection></app-store-selection>
+  </div>
+
+
 
   <div class="menu">Menu</div>
 
-  <app-fill-button routerLink="auth" text="Sign In"></app-fill-button>
+  <div style="display: flex; align-items: center; gap: 1em;"><app-bag></app-bag>
+    <app-fill-button routerLink="auth" text="Sign In"></app-fill-button>
+  </div>
 </nav>
 <router-outlet></router-outlet>

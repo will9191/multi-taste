@@ -7,6 +7,8 @@ import { ShareButtonComponent } from '../../../../shared/components/buttons/shar
 import { MySearchFieldComponent } from '../../../../shared/components/my-search-field/my-search-field.component';
 import { CustomizationService } from '../../customization.service';
 import { CreateButtonComponent } from '../../../../shared/components/buttons/create-button/create-button.component';
+import { MatDialog } from '@angular/material/dialog';
+import { NewCustomizationComponent } from '../new-customization/new-customization.component';
 
 @Component({
   selector: 'app-customization-list',
@@ -23,19 +25,23 @@ import { CreateButtonComponent } from '../../../../shared/components/buttons/cre
   styleUrl: './customization-list.component.scss',
 })
 export class CustomizationListComponent implements OnInit {
-  constructor(private ingredientService: CustomizationService) {}
-  ingredients: any = [];
+  constructor(private customizationService: CustomizationService, private matDialog: MatDialog) {}
+  customizations: any = [];
 
   ngOnInit(): void {
     this.findAll();
   }
 
   findAll() {
-    this.ingredientService.findAll().subscribe({
+    this.customizationService.findAll().subscribe({
       next: (data: any) => {
-        this.ingredients = data;
+        this.customizations = data;
       },
     });
+  }
+
+  create(){
+    const dialog =this.matDialog.open(NewCustomizationComponent);
   }
 
   delete() {}

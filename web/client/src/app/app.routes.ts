@@ -13,6 +13,8 @@ import { EmailPageComponent } from './core/auth/pages/email-page/email-page.comp
 import { NavComponent } from './shared/layouts/nav/nav.component';
 import { CategoryListComponent } from './features/category/pages/category-list/category-list.component';
 import { ComboListComponent } from './features/combo/pages/combo-list/combo-list.component';
+import { ForgotPasswordComponent } from './core/auth/pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './core/auth/pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -73,4 +75,12 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent
+  }
 ];

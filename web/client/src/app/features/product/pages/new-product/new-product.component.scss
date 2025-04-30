@@ -62,7 +62,13 @@
 }
 
 .save {
+  background: var(--primary-color);
+  color: white;
+    &:hover{
+    opacity: 0.8;
+  }
 }
+
 
 .save-inactive {
   pointer-events: none;

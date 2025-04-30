@@ -23,6 +23,7 @@ import {
   matMinusSharp,
 } from '@ng-icons/material-icons/sharp';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FillButtonComponent } from "../../../../shared/components/buttons/fill-button/fill-button.component";
 
 @Component({
   selector: 'app-new-product',
@@ -32,6 +33,7 @@ import { MatDialogRef } from '@angular/material/dialog';
     ReactiveFormsModule,
     FormsModule,
     NgIcon,
+    FillButtonComponent
   ],
   viewProviders: [
     provideIcons({
@@ -48,7 +50,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class NewProductComponent implements OnInit {
   formGroup: FormGroup;
-  changed = false;
+  active: boolean = true;
 
   constructor(
     private fb: FormBuilder,

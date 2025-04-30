@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="top">
+      <div class="title">Information</div>
+      <ng-icon (click)="close()" class="icon" name="matCloseSharp"></ng-icon>
+    </div>
+    <form class="form" [formGroup]="formGroup">
+      <div class="fields">
+        <div class="left">
+          <div>
+            <div class="upload">
+              <span>Upload</span> <span>Photo </span><span>⬆️</span>
+            </div>
+            <div class="form-field">
+              <input class="input-field" formControlName="name" required />
+              <label class="label-field">Name</label>
+            </div>
+          </div>
+  
+       
+  
+          <div class="form-field">
+            <textarea
+              class="input-field textarea-field"
+              formControlName="icon"
+              required
+            ></textarea>
+            <label class="label-field">Icon</label>
+          </div>
+
+        </div>
+
+       
+      </div>
+      <button [ngClass]="changed ? 'btn-save save' : 'btn-save save-inactive'">
+        Save
+      </button>
+    </form>
+  </div>
+  

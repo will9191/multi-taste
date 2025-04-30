@@ -195,8 +195,6 @@
         </div>
       </div>
     </div>
-    <button [ngClass]="changed ? 'btn-save save' : 'btn-save save-inactive'">
-      Save
-    </button>
+    <app-fill-button [active]="active" text="Save"></app-fill-button>
   </form>
 </div>

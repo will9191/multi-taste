@@ -3,11 +3,11 @@ import { MyInputComponent } from "../../../../shared/components/my-input/my-inpu
 import { FillButtonComponent } from "../../../../shared/components/buttons/fill-button/fill-button.component";
 
 @Component({
-  selector: 'app-forgot-password',
+  selector: 'app-reset-password',
   imports: [MyInputComponent, FillButtonComponent],
-  templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.scss'
+  templateUrl: './reset-password.component.html',
+  styleUrl: './reset-password.component.scss'
 })
-export class ForgotPasswordComponent {
+export class ResetPasswordComponent {
 
 }

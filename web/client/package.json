@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@ng-icons/core": "^31.2.0",
+    "@ng-icons/feather-icons": "^31.3.0",
     "@ng-icons/huge-icons": "^31.2.0",
     "@ng-icons/material-icons": "^31.2.0",
     "ng2-currency-mask": "^13.0.3",

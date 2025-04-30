@@ -1,16 +1,16 @@
 <div class="container">
   <div class="top-field">
     <h2>Customizations</h2>
-    <app-create-button text="+ Create Ingredient"></app-create-button>
+    <app-create-button (click)="create()" text="+ Create Ingredient"></app-create-button>
   </div>
   <app-my-search-field></app-my-search-field>
   <div class="customizations">
-    @for (ingredient of ingredients; track $index) {
+    @for (customization of customizations; track $index) {
     <div class="customization">
-      <img class="img" src="{{ ingredient.imgUrl }}" alt="" />
+      <img class="img" src="{{ customization.imgUrl }}" alt="" />
       <div class="top">
         <div class="left">
-          <div class="name">{{ ingredient.name }}</div>
+          <div class="name">{{ customization.name }}</div>
         </div>
         <div class="actions">
           <app-view-button></app-view-button>
