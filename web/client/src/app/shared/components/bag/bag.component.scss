@@ -1,33 +1,33 @@
 .container {
-    display: flex;
-    gap: 0.5em;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  cursor: pointer;
 
-    .value {
-        font-weight: 900;
+  .value {
+    font-weight: 900;
+  }
+
+  .bag {
+    position: relative;
+
+    .quantity {
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1.2em;
+      height: 1.2em;
+      border-radius: 100px;
+      align-items: center;
+      justify-content: center;
+      background: var(--octanary-color);
+      color: white;
     }
 
-    .bag {
-        position: relative;
-
-        .quantity {
-            display: flex;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 1.2em;
-            height: 1.2em;
-            border-radius: 100px;
-            align-items: center;
-            justify-content: center;
-            background: red;
-            color: white;
-        }
-
-        .icon {
-            font-size: 2em;
-            margin: 0.2em;
-        }
+    .icon {
+      font-size: 2em;
+      margin: 0.2em;
     }
+  }
 }

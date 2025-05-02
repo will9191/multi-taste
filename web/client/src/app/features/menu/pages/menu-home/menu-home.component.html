@@ -1,1 +1,46 @@
-<p>menu-home works!</p>
+<div class="categories">
+  @for (category of categories; track $index) {
+  <div class="category">
+    <div class="icon-parent">
+      <div class="icon">{{ category.icon }}</div>
+    </div>
+    <div class="name">
+      {{ category.name }}
+    </div>
+  </div>
+  }
+</div>
+
+<div class="items-section">
+  <div class="category-name">
+    {{ categorySelected?.name }}
+  </div>
+
+  <div class="products">
+    @for (product of products; track $index) {
+    <div class="product">
+      <div class="img-field">
+        <img class="img" src="{{ product.imgUrl }}" alt="" />
+        <div class="discount" *ngIf="product.discount != 0">
+          <span> {{ product.discount * 100 }}%</span>
+          <span>OFF</span>
+        </div>
+      </div>
+      <div class="label-field">
+        <div class="name">{{ product.name }}</div>
+        <div class="price-field">
+          <div class="price">
+            ${{
+              product.price - product.price * product.discount
+                | number : "1.2-2"
+            }}
+          </div>
+          <div *ngIf="product.discount != 0" class="old-price">
+            ${{ product.price }}
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

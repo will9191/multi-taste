@@ -9,10 +9,12 @@ import { ApiEndpoint } from '../../shared/constants/endpoint';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
-  
-
   findAll(): Observable<any> {
     return this.http.get(`${ApiEndpoint.Product.base}`);
+  }
+
+  findByCategory(slug: string): Observable<any> {
+    return this.http.get(`${ApiEndpoint.Product.base}/category/${slug}`);
   }
 
   delete(id: any) {

@@ -15,12 +15,18 @@ import { CategoryListComponent } from './features/category/pages/category-list/c
 import { ComboListComponent } from './features/combo/pages/combo-list/combo-list.component';
 import { ForgotPasswordComponent } from './core/auth/pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './core/auth/pages/reset-password/reset-password.component';
+import { MenuHomeComponent } from './features/menu/pages/menu-home/menu-home.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: NavComponent,
-    children: [],
+    children: [
+      {
+        path: '',
+        component: MenuHomeComponent,
+      },
+    ],
   },
   {
     path: 'dash',
@@ -77,10 +83,10 @@ export const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent
+    component: ForgotPasswordComponent,
   },
   {
     path: 'reset-password',
-    component: ResetPasswordComponent
-  }
+    component: ResetPasswordComponent,
+  },
 ];
