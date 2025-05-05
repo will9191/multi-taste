@@ -10,7 +10,4 @@ export const ApiEndpoint = {
   Product: {
     base: `${BASE_URL}/product-service/product`,
   },
-  Combo: {
-    base: `${BASE_URL}/combo-service/combo`,
-  },
 };

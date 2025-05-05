@@ -12,10 +12,10 @@ import { AuthPageComponent } from './core/auth/pages/auth-page/auth-page.compone
 import { EmailPageComponent } from './core/auth/pages/email-page/email-page.component';
 import { NavComponent } from './shared/layouts/nav/nav.component';
 import { CategoryListComponent } from './features/category/pages/category-list/category-list.component';
-import { ComboListComponent } from './features/combo/pages/combo-list/combo-list.component';
 import { ForgotPasswordComponent } from './core/auth/pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './core/auth/pages/reset-password/reset-password.component';
 import { MenuHomeComponent } from './features/menu/pages/menu-home/menu-home.component';
+import path from 'node:path';
 
 export const routes: Routes = [
   {
@@ -23,8 +23,18 @@ export const routes: Routes = [
     component: NavComponent,
     children: [
       {
-        path: '',
+        path: 'store/:storeSlug/:mode',
         component: MenuHomeComponent,
+        children: [
+          {
+            path: ':categorySlug',
+            component: MenuHomeComponent
+          },
+          {
+            path: ':categorySlug/:productSlug',
+            component: ProductDetailsComponent,
+          },
+        ],
       },
     ],
   },
@@ -37,11 +47,7 @@ export const routes: Routes = [
         component: ProductListComponent,
         title: 'Products',
       },
-      {
-        path: 'combos',
-        component: ComboListComponent,
-        title: 'Combos',
-      },
+ 
       {
         path: 'categories',
         component: CategoryListComponent,

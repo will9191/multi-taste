@@ -25,7 +25,7 @@ export class MenuHomeComponent implements OnInit {
 
   categorySelected = {
     name: 'Burgers',
-    slug: 'burgers',
+    slug: 'promotions',
     id: 1,
   };
 
@@ -35,6 +35,7 @@ export class MenuHomeComponent implements OnInit {
     this.categoryService.getAll().subscribe({
       next: (data: any) => {
         this.categories = data;
+        console.log(data);
       },
     });
   }
@@ -45,6 +46,7 @@ export class MenuHomeComponent implements OnInit {
     this.productService.findByCategory(this.categorySelected.slug).subscribe({  
       next: (data: any) => {
         this.products = data;
+        console.log(data);
 
         this.titleService.setTitle(`${this.categorySelected.name} | Multi Taste`);
         this.metaService.updateTag({
