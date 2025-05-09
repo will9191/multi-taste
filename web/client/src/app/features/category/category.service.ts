@@ -12,4 +12,8 @@ export class CategoryService {
   getAll(): Observable<any> {
     return this.http.get(`${ApiEndpoint.Category.base}`);
   }
+
+  getAllByStoreId(storeId: number): Observable<any> {
+    return this.http.get(`${ApiEndpoint.Category.base}/${storeId}`);
+  }
 }

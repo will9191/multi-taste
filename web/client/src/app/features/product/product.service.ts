@@ -17,6 +17,27 @@ export class ProductService {
     return this.http.get(`${ApiEndpoint.Product.base}/category/${slug}`);
   }
 
+  getProductsByStoreAndCategory(
+    store: string,
+    mode: string,
+    category: string
+  ): Observable<any> {
+    return this.http.get(
+      `${ApiEndpoint.Product.base}/store/${store}/${mode}/${category}`
+    );
+  }
+
+  getProductByStoreAndCategory(
+    store: string,
+    mode: string,
+    category: string,
+    product: string
+  ): Observable<any> {
+    return this.http.get(
+      `${ApiEndpoint.Product.base}/store/${store}/${mode}/${category}/${product}`
+    );
+  }
+
   delete(id: any) {
     return id; // this.http.delete()
   }

@@ -1,4 +1,12 @@
 package com.api.product_service.dto.request;
 
-public class SingleProductRequest {
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+public class SingleProductRequest extends ProductRequest {
+    private List<ProductCustomizationRequest> customizations;
 }

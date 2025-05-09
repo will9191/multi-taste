@@ -1,0 +1,41 @@
+<div class="product">
+  <div class="left">
+    <img class="img" src="{{ product.imgUrl }}" alt="" />
+    <div class="middle">
+      <app-quantity-selection></app-quantity-selection>
+      <div class="price">${{ product.price }}</div>
+    </div>
+    <app-fill-button [active]="false" text="Add to Cart"></app-fill-button>
+  </div>
+
+  <div class="right">
+    <div class="name">{{ product.name }}</div>
+    <div class="description">{{ product.description }}</div>
+    <div class="customize-title">Customize product</div>
+    <div class="customize-sub-title">Customize</div>
+    <div class="customize-button" (click)="this.modalOpen = !this.modalOpen">
+      Customize
+    </div>
+    <div class="modal" *ngIf="modalOpen">
+      <div class="customizations-modal">
+        <div class="title">How do you want to customize?</div>
+        <div class="customizations">
+          <div class="sub-title">Customize</div>
+          @for (customization of product.customizations; track $index) {
+          <div class="customization">
+            <div class="customization-left">
+              <img src="{{ customization.customization.imgUrl }}" alt="" />
+              <div>{{ customization.customization.name }}</div>
+            </div>
+            <app-quantity-selection></app-quantity-selection>
+          </div>
+          }
+        </div>
+        <div class="bottom">
+          <div class="price">$ {{ product.price }}</div>
+          <app-fill-button text="Save"></app-fill-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

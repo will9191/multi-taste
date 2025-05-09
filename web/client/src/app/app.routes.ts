@@ -16,6 +16,7 @@ import { ForgotPasswordComponent } from './core/auth/pages/forgot-password/forgo
 import { ResetPasswordComponent } from './core/auth/pages/reset-password/reset-password.component';
 import { MenuHomeComponent } from './features/menu/pages/menu-home/menu-home.component';
 import path from 'node:path';
+import { MenuProductComponent } from './features/menu/pages/menu-product/menu-product.component';
 
 export const routes: Routes = [
   {
@@ -28,13 +29,13 @@ export const routes: Routes = [
         children: [
           {
             path: ':categorySlug',
-            component: MenuHomeComponent
-          },
-          {
-            path: ':categorySlug/:productSlug',
-            component: ProductDetailsComponent,
+            component: MenuHomeComponent,
           },
         ],
+      },
+      {
+        path: 'store/:storeSlug/:mode/:categorySlug/:productSlug',
+        component: MenuProductComponent,
       },
     ],
   },
@@ -47,7 +48,7 @@ export const routes: Routes = [
         component: ProductListComponent,
         title: 'Products',
       },
- 
+
       {
         path: 'categories',
         component: CategoryListComponent,

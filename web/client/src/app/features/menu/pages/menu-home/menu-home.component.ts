@@ -25,14 +25,14 @@ export class MenuHomeComponent implements OnInit {
 
   categorySelected = {
     name: 'Burgers',
-    slug: 'promotions',
+    slug: 'burgers',
     id: 1,
   };
 
   categories: any;
 
   getCategories() {
-    this.categoryService.getAll().subscribe({
+    this.categoryService.getAllByStoreId(1).subscribe({
       next: (data: any) => {
         this.categories = data;
         console.log(data);
@@ -43,7 +43,7 @@ export class MenuHomeComponent implements OnInit {
   products: any;
 
   getProducts() {
-    this.productService.findByCategory(this.categorySelected.slug).subscribe({  
+    this.productService.getProductsByStoreAndCategory("bauru-00", "mode", this.categorySelected.slug).subscribe({  
       next: (data: any) => {
         this.products = data;
         console.log(data);

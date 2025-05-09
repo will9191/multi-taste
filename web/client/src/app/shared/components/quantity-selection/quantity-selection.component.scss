@@ -1,0 +1,25 @@
+.quantity-container {
+  font-size: 1.5em;
+  display: flex;
+  border: 1px solid #111111;
+  border-radius: 100px;
+  background: transparent;
+  gap: 1em;
+  align-items: center;
+  padding: 0em 1em;
+  height: fit-content;
+  width: fit-content;
+
+  .decrease {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  .quantity {
+    font-size: 0.7em;
+  }
+
+  .increase {
+    cursor: pointer;
+  }
+}
